@@ -296,11 +296,11 @@
     .stage-dots i.on{background:var(--green);width:22px;border-radius:5px}
     @media(max-width:860px){
       .stage-sticky{height:100svh}
-      .stage-inner{position:absolute;top:68px;left:0;right:0;height:60svh}   /* phone lives in the top band */
-      .stage-copy{left:0!important;right:0!important;width:auto;top:calc(60svh + 74px);bottom:auto;transform:none;padding:0 26px;text-align:center;z-index:5}
-      .stage-copy .feature-num{justify-content:center;margin-bottom:6px}
-      .stage-copy h3{font-size:clamp(1.35rem,5.5vw,1.9rem);margin-bottom:8px}
-      .stage-copy p{font-size:.95rem;line-height:1.5}
+      .stage-inner{position:absolute;top:66px;left:0;right:0;height:54svh}   /* phone lives in the top band */
+      .stage-copy{left:0!important;right:0!important;width:auto;top:calc(54svh + 56px);bottom:auto;transform:none;padding:0 24px;text-align:center;z-index:5}
+      .stage-copy .feature-num{justify-content:center;margin-bottom:5px}
+      .stage-copy h3{font-size:clamp(1.25rem,5vw,1.7rem);margin-bottom:7px;line-height:1.12}
+      .stage-copy p{font-size:.9rem;line-height:1.4}
       .stage-dots{display:none}
     }
     @media(prefers-reduced-motion:reduce){
@@ -913,7 +913,7 @@
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-        camera.position.set(0, 0, isMobile ? 7.7 : 9);   // frame the whole phone inside the mobile band
+        camera.position.set(0, 0, isMobile ? 8.1 : 9);   // frame the whole phone inside the mobile band
 
         const pmrem = new THREE.PMREMGenerator(renderer);
         scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
