@@ -23,6 +23,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- Structured data for search engines and AI assistants -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://aperiaskin.com/#org",
+        "name": "Aperia",
+        "url": "https://aperiaskin.com/",
+        "logo": "https://aperiaskin.com/assets/aperia-logo.png",
+        "description": "Aperia is a hormone-aware skincare intelligence app that helps people understand why they break out by tracking their skin alongside their cycle, sleep, stress and food.",
+        "sameAs": ["https://www.tiktok.com/@aperia66", "https://www.instagram.com/aperia.app"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aperiaskin.com/#website",
+        "name": "Aperia",
+        "url": "https://aperiaskin.com/",
+        "publisher": { "@id": "https://aperiaskin.com/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Aperia: Skin Intelligence",
+        "operatingSystem": "iOS",
+        "applicationCategory": "LifestyleApplication",
+        "url": "https://aperiaskin.com/",
+        "description": "Aperia scans your skin, tracks your cycle, sleep, stress and food, and shows you the patterns behind your breakouts in plain language. A self-knowledge tool for understanding your skin — free to start.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://aperiaskin.com/#org" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Why do I break out in the same spot every month?", "acceptedAnswer": { "@type": "Answer", "text": "For many people, skin follows the hormonal cycle — the same week brings the same flare, month after month. It is a pattern, not bad luck or a lack of discipline. Aperia helps you see the pattern by tracking your skin alongside your cycle." } },
+          { "@type": "Question", "name": "How do I figure out what is triggering my breakouts?", "acceptedAnswer": { "@type": "Answer", "text": "Most of what your skin does day to day comes down to a few inputs: your cycle, sleep, stress and food. Aperia logs these in seconds a day and connects them to your skin, so the patterns surface on their own instead of you guessing." } },
+          { "@type": "Question", "name": "What is Aperia?", "acceptedAnswer": { "@type": "Answer", "text": "Aperia is a hormone-aware skincare intelligence app for iPhone. It scans your skin and gives you a score by zone, tracks your cycle, sleep, stress and food, and shows you the patterns behind your breakouts in plain language. It is a self-knowledge tool, not a medical service." } },
+          { "@type": "Question", "name": "Does Aperia work for men?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Breakouts are not only a women's issue — Aperia works for anyone who wants to understand their skin, and it tailors the experience to you during setup." } },
+          { "@type": "Question", "name": "Is Aperia free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Aperia is free to start. There is an optional premium plan for deeper insights and a monthly skin-journey report." } },
+          { "@type": "Question", "name": "Is my data private?", "acceptedAnswer": { "@type": "Answer", "text": "Your photos are encrypted, never sold and never shared with third parties. Aperia is private by design and GDPR-compliant." } },
+          { "@type": "Question", "name": "How is Aperia different from other skincare apps?", "acceptedAnswer": { "@type": "Answer", "text": "Most apps sell you the next product. Aperia explains your skin — it connects your habits and your cycle to what your skin actually does, so you understand why you break out instead of guessing." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --cream:#FAF7F2; --white:#FFFFFF; --green:#2D5F3F; --green-deep:#234B31;
@@ -289,6 +336,17 @@
     .langs .lead{margin:14px auto 0}
     .lang-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
     .lang-pills span{font-weight:600;color:var(--green);background:var(--soft-green);border-radius:999px;padding:10px 20px;font-size:.98rem}
+
+    /* FAQ */
+    .faq{max-width:780px;margin:26px auto 0}
+    .faq details{border-top:1px solid var(--line);padding:20px 2px}
+    .faq details:last-child{border-bottom:1px solid var(--line)}
+    .faq summary{font-family:'Fraunces',Georgia,serif;font-size:1.22rem;font-weight:500;color:var(--ink);cursor:pointer;
+      list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:'+';color:var(--green);font-size:1.5rem;line-height:1;flex-shrink:0}
+    .faq details[open] summary::after{content:'\2013'}
+    .faq details p{color:var(--grey);margin-top:14px;font-size:1.06rem;line-height:1.7;max-width:70ch}
 
     /* Privacy */
     .privacy{text-align:center;max-width:640px;margin:0 auto}
@@ -620,6 +678,44 @@
       </div>
       <h2>Your data is yours.</h2>
       <p>Your photos are encrypted, never sold, and never shared. Private by design, GDPR-compliant.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec white" id="faq">
+    <div class="wrap">
+      <p class="eyebrow reveal">Questions</p>
+      <h2 class="sec-title reveal" style="margin-top:10px">Common questions</h2>
+      <div class="faq reveal">
+        <details open>
+          <summary>Why do I break out in the same spot every month?</summary>
+          <p>For a lot of people, skin follows the hormonal cycle — the same week can bring the same flare, month after month. It isn't random, and it isn't your fault; it's a pattern. Aperia helps you see that pattern by tracking your skin alongside your cycle, so the flare finally has a name and a week attached to it.</p>
+        </details>
+        <details>
+          <summary>How do I figure out what's triggering my breakouts?</summary>
+          <p>Most of what your skin does day to day comes down to a few inputs: your cycle, your sleep, your stress and your food. Aperia logs these in seconds a day and connects them to your skin, so the patterns surface on their own — you stop guessing and start understanding what your own skin actually responds to.</p>
+        </details>
+        <details>
+          <summary>What is Aperia?</summary>
+          <p>Aperia is a hormone-aware skincare intelligence app for iPhone. It scans your skin and gives you a score by zone, tracks your cycle, sleep, stress and food, and shows you the patterns behind your breakouts in plain language. Aperia is a self-knowledge tool that helps you understand your skin — not a medical service.</p>
+        </details>
+        <details>
+          <summary>Does Aperia work for men?</summary>
+          <p>Yes. Breakouts aren't only a women's issue — plenty of men deal with them too. Aperia works for anyone who wants to understand their skin, and it tailors the experience to you during setup.</p>
+        </details>
+        <details>
+          <summary>Is Aperia free?</summary>
+          <p>Yes — Aperia is free to start. There's an optional premium plan for deeper insights and your monthly skin-journey report, but you can begin and get real value without paying.</p>
+        </details>
+        <details>
+          <summary>Is my data private?</summary>
+          <p>Your photos are encrypted, never sold and never shared with third parties. Aperia is private by design and GDPR-compliant — your skin data is yours.</p>
+        </details>
+        <details>
+          <summary>How is Aperia different from other skincare apps?</summary>
+          <p>Most apps sell you the next product. Aperia explains your skin instead — it connects your habits and your cycle to what your skin actually does, so you finally understand <em>why</em> you break out, rather than guessing your way through another routine.</p>
+        </details>
+      </div>
     </div>
   </section>
 
