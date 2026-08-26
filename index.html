@@ -228,11 +228,10 @@
     .feature-media .paper img{width:100%;display:block}
 
     /* ---- Scroll-flip stage (desktop enhancement) ---- */
-    .stage{display:none}
-    @media(min-width:861px){
-      .stage{display:block;position:relative;height:calc(var(--flip-n,8) * 88vh)}
-      #features .features-static{display:none}
-    }
+    .stage{display:none;position:relative;height:calc(var(--flip-n,8) * 88vh)}
+    body.gl-on .stage{display:block}
+    body.gl-on #features .features-static{display:none}
+    @media(max-width:860px){ .stage{height:calc(var(--flip-n,8) * 76vh)} }
     .stage-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
     .stage-inner{position:relative;width:100%;height:100%}
     .phone-gl{position:absolute;inset:0;width:100%;height:100%;display:none;z-index:2}
@@ -295,6 +294,13 @@
     .stage-dots{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:4}
     .stage-dots i{width:8px;height:8px;border-radius:50%;background:rgba(45,95,63,.22);transition:all .25s ease}
     .stage-dots i.on{background:var(--green);width:22px;border-radius:5px}
+    @media(max-width:860px){
+      .stage-copy{left:0!important;right:0!important;width:auto;top:auto;bottom:7%;transform:none;padding:0 26px;text-align:center}
+      .stage-copy .feature-num{justify-content:center}
+      .stage-copy h3{font-size:clamp(1.5rem,6vw,2.05rem)}
+      .stage-copy p{font-size:1rem}
+      .stage-dots{bottom:22px}
+    }
     @media(prefers-reduced-motion:reduce){
       .stage{display:none!important}
       #features .features-static{display:block!important}
@@ -891,8 +897,8 @@
   <script type="module">
     try {
       const canvas = document.getElementById('phoneGL');
-      if (canvas && window.matchMedia('(min-width:861px)').matches &&
-          !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      if (canvas && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+        const isMobile = window.matchMedia('(max-width:860px)').matches;
 
         const THREE = await import('three');
         const { RoundedBoxGeometry } = await import('three/addons/geometries/RoundedBoxGeometry.js');
@@ -905,7 +911,7 @@
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-        camera.position.set(0, 0, 9);
+        camera.position.set(0, 0, isMobile ? 11 : 9);   // pull back on mobile so the phone sits above the copy
 
         const pmrem = new THREE.PMREMGenerator(renderer);
         scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -1024,13 +1030,14 @@
         }
         function renderOnce(){
           renderer.render(scene, camera);
-          if(!firstOK){ firstOK = true; const wrap = document.querySelector('.stage-phone-wrap'); if(wrap) wrap.style.display='none'; canvas.style.display='block'; }
+          if(!firstOK){ firstOK = true; document.body.classList.add('gl-on'); const wrap = document.querySelector('.stage-phone-wrap'); if(wrap) wrap.style.display='none'; canvas.style.display='block'; }
         }
         function setPose(pos){
           lastPos = pos;
           phone.rotation.y = baseYaw + pos * Math.PI * 2;
           phone.rotation.x = -0.05;
-          phone.position.x = Math.cos(pos * Math.PI) * amp;
+          phone.position.x = isMobile ? 0 : Math.cos(pos * Math.PI) * amp;   // centred on mobile, slides on desktop
+          phone.position.y = isMobile ? 0.95 : 0;                            // lift above the copy on mobile
           setImage(Math.round(pos));
           renderOnce();
         }
