@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperia — Understand your skin</title>
+  <meta name="description" content="Aperia scans your skin, learns your patterns, and finally shows you why you break out. Hormone-aware skin intelligence. Free to start." />
+  <link rel="canonical" href="https://aperiaskin.com/" />
+
+  <!-- Open Graph / social share (REPLACE og-image with a real 1200x630 image in /assets) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aperia — Understand your skin" />
+  <meta property="og:description" content="Your skin isn't random. It's hormonal — and it's not your fault. Aperia shows you why." />
+  <meta property="og:url" content="https://aperiaskin.com/" />
+  <meta property="og:image" content="https://aperiaskin.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/aperia-logo.png" />
+
+  <!-- Fonts: Fraunces (display serif) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --cream:#FAF7F2; --white:#FFFFFF; --green:#2D5F3F; --green-deep:#234B31;
+      --plum:#5B3A52; --soft-green:#E6EFE8; --soft-peach:#F7E5DD; --soft-plum:#EFE7EC;
+      --ink:#1A1A1A; --grey:#6B6B6B; --grey-2:#9A968F; --line:rgba(26,26,26,.08);
+      --success:#4A7C59; --radius:20px; --shadow:0 18px 50px -24px rgba(38,75,52,.25);
+      --maxw:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);
+      line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    }
+    h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-.02em;line-height:1.06}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    .eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--plum)}
+    .lead{font-size:1.14rem;color:var(--grey);max-width:52ch}
+    section{position:relative}
+
+    /* ---------- Buttons ---------- */
+    .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;border-radius:999px;
+      padding:14px 26px;transition:transform .2s ease,box-shadow .2s ease;cursor:pointer;border:0;font-size:.98rem}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-green{background:var(--green);color:#F3F0E9}
+    .btn-green:hover{box-shadow:0 12px 28px -14px rgba(45,95,63,.7)}
+    .btn-cream{background:#F3F0E9;color:var(--green)}
+    .btn-appstore{background:#111;color:#fff;padding:12px 26px;border-radius:999px;display:inline-flex;align-items:center;gap:12px}
+    .btn-appstore small{display:block;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:#c9c9c9;line-height:1;margin-bottom:2px}
+    .btn-appstore .store{font-size:1.18rem;font-weight:600;line-height:1;font-family:'Inter'}
+    .btn-appstore.on-green{background:#F3F0E9;color:#111}
+    .btn-appstore.on-green small{color:#6b6b6b}
+    /* Nav CTA — steady (no bounce), white text that inverts to black on hover/press */
+    .nav-links a.nav-cta{color:#fff;transition:background .2s ease,color .2s ease,box-shadow .2s ease}
+    .nav-links a.nav-cta:hover,.nav-links a.nav-cta:focus,.nav-links a.nav-cta:active{transform:none;color:#111}
+    .textlink{color:var(--green);font-weight:600;border-bottom:1.5px solid rgba(45,95,63,.35);padding-bottom:2px}
+    .textlink:hover{border-color:var(--green)}
+
+    /* ---------- Header ---------- */
+    header{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .mark{width:42px;height:42px;display:grid;place-items:center;flex-shrink:0}
+    .brand .mark img{width:100%;height:100%;object-fit:contain}
+    .brand .name{font-family:'Fraunces';font-size:1.4rem;color:var(--green);font-weight:600}
+    .nav-links{display:flex;align-items:center;gap:30px}
+    .nav-links a{color:var(--grey);font-weight:500;font-size:.95rem;transition:color .15s}
+    .nav-links a:hover{color:var(--ink)}
+    .menu-btn{display:none;background:none;border:0;cursor:pointer}
+    @media(max-width:860px){
+      .nav-links{display:none}
+      .menu-btn{display:grid}
+    }
+    .mobile-menu{display:none;flex-direction:column;gap:6px;padding:12px 24px 24px;border-bottom:1px solid var(--line);background:var(--cream)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 6px;color:var(--ink);font-weight:500;border-bottom:1px solid var(--line)}
+
+    /* ---------- Reveal animation ---------- */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* ---------- Hero ---------- */
+    .hero{padding:72px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+    .hero h1{font-size:clamp(2.6rem,5.4vw,4.3rem);margin:18px 0 22px}
+    .hero .lead{font-size:1.22rem}
+    .hero-cta{display:flex;align-items:center;gap:22px;margin-top:34px;flex-wrap:wrap}
+    .microline{margin-top:16px;font-size:.86rem;color:var(--grey-2);display:flex;align-items:center;gap:8px}
+    .microline .dot{width:6px;height:6px;border-radius:50%;background:var(--success)}
+    /* Phone mockup */
+    .phone{position:relative;width:280px;margin:0 auto;aspect-ratio:9/19.2;border-radius:44px;background:#111;
+      padding:11px;box-shadow:var(--shadow);animation:float 7s ease-in-out infinite}
+    .phone .screen{width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--soft-green)}
+    .phone .screen img{width:100%;height:100%;object-fit:cover;display:block}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    /* Stylish 3D tilt on the hero phone (kept while it floats) */
+    .hero .phone{
+      transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg);
+      transform-origin:center;
+      animation:floatTilt 7s ease-in-out infinite;
+      box-shadow:-34px 44px 80px -34px rgba(38,75,52,.4);
+    }
+    @keyframes floatTilt{
+      0%,100%{transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg) translateY(0)}
+      50%{transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg) translateY(-16px)}
+    }
+    @media(max-width:860px){
+      .hero-grid{grid-template-columns:1fr;text-align:left}
+      .hero{padding:44px 0 30px}
+      .phone{animation:none;margin-top:8px}
+      .hero .phone{animation:none;transform:perspective(1400px) rotateY(-10deg) rotate(-2deg)}
+    }
+
+    /* ---------- Placeholder blocks (REPLACE with <img>) ---------- */
+    .ph{display:grid;place-items:center;text-align:center;color:var(--grey-2);font-size:.82rem;
+      background:var(--soft-green);border:1px dashed rgba(45,95,63,.25);width:100%;height:100%}
+    .ph.peach{background:var(--soft-peach);border-color:rgba(150,90,60,.22)}
+    .ph .icn{opacity:.5;margin-bottom:6px}
+
+    /* ---------- Generic section ---------- */
+    .sec{padding:84px 0}
+    .sec.white{background:var(--white)}
+    .sec.mint{background:var(--soft-green)}
+    .sec-title{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+    .kicker{margin-bottom:10px}
+
+    /* Problem */
+    .problem{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+    .problem .callout{background:var(--soft-green);border-radius:var(--radius);padding:28px 30px;margin-top:26px}
+    .problem .callout p{font-family:'Fraunces';font-size:1.5rem;color:var(--green);line-height:1.2}
+    @media(max-width:860px){.problem{grid-template-columns:1fr;gap:24px}}
+
+    /* How it works cards */
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+    .card{background:var(--white);border-radius:var(--radius);padding:26px 24px 30px;box-shadow:0 12px 30px -22px rgba(38,75,52,.22);
+      transition:transform .25s ease,box-shadow .25s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -24px rgba(38,75,52,.35)}
+    .card .num{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-family:'Fraunces';
+      font-size:1.05rem;margin-bottom:18px}
+    .card:nth-child(4n+1) .num{background:var(--soft-green);color:var(--green)}
+    .card:nth-child(4n+2) .num{background:var(--soft-peach);color:var(--plum)}
+    .card:nth-child(4n+3) .num{background:var(--soft-green);color:var(--green)}
+    .card:nth-child(4n+4) .num{background:var(--soft-peach);color:var(--plum)}
+    .card h3{font-size:1.32rem;margin-bottom:8px}
+    .card p{color:var(--grey);font-size:.96rem}
+    @media(max-width:860px){.cards{grid-template-columns:1fr 1fr;gap:14px}}
+    @media(max-width:520px){.cards{grid-template-columns:1fr}}
+
+    /* Showcase (legacy grid, kept for reference) */
+    .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+    .shot .phone{width:100%;margin:0}
+    .shot p{margin-top:16px;color:var(--grey);font-size:.92rem;max-width:24ch}
+    @media(max-width:860px){
+      .shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:44px -24px 0;padding:0 24px 8px}
+      .shot{flex:0 0 66%;scroll-snap-align:center}
+    }
+
+    /* Feature story (alternating rows) */
+    .features-intro{max-width:60ch;margin-top:12px}
+    .feature{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .feature + .feature{margin-top:110px}
+    .feature.reverse .feature-media{order:2}
+    .feature-num{display:inline-flex;align-items:center;gap:10px;font-family:'Fraunces';font-size:1.05rem;color:var(--green);margin-bottom:14px}
+    .feature-num .bar{width:26px;height:2px;background:var(--green);opacity:.5;display:inline-block}
+    .feature-copy h3{font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.08;margin-bottom:16px}
+    .feature-copy p{color:var(--grey);font-size:1.1rem;max-width:47ch}
+    .ftags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .ftags span{font-size:.8rem;font-weight:600;color:var(--green);background:var(--soft-green);border-radius:999px;padding:7px 14px}
+    .feature-media{display:flex;justify-content:center}
+    .feature-media .phone{width:272px;margin:0;animation:none}
+    .feature-media .phone .screen .ph{border-radius:34px}
+    .feature-media .paper{width:300px;background:#fff;border-radius:14px;overflow:hidden;
+      box-shadow:0 32px 64px -32px rgba(38,75,52,.5);border:1px solid var(--line)}
+    .feature-media .paper img{width:100%;display:block}
+
+    /* ---- Scroll-flip stage (desktop enhancement) ---- */
+    .stage{display:none}
+    @media(min-width:861px){
+      .stage{display:block;position:relative;height:calc(var(--flip-n,8) * 88vh)}
+      #features .features-static{display:none}
+    }
+    .stage-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+    .stage-inner{position:relative;width:100%;height:100%}
+    .phone-gl{position:absolute;inset:0;width:100%;height:100%;display:none;z-index:2}
+    .stage-phone-wrap{position:absolute;top:50%;left:50%;perspective:1700px;z-index:2;
+      transform:translate(-50%,-50%);will-change:transform}
+    /* --- iPhone 17 Pro, real titanium unibody (6 faces, depth 34) --- */
+    .stage-phone{position:relative;width:290px;height:619px;transform-style:preserve-3d;
+      will-change:transform;transform:rotateY(0deg)}
+    .stage-phone .pf{position:absolute;top:50%;left:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+    /* FRONT: titanium frame -> black bezel -> screen (frame colour matches the rails, so no seam) */
+    /* shared geometry for every layer (front, back, and the body slabs) */
+    .stage-phone .lyr{position:absolute;top:50%;left:50%;width:290px;height:619px;margin:-309.5px 0 0 -145px;border-radius:48px;overflow:hidden}
+    /* FRONT: titanium frame -> black bezel -> screen */
+    .stage-phone .pf-front{transform:translateZ(15px);padding:5px;
+      background:linear-gradient(125deg,#414d72,#2a3350 42%,#212a44);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)}
+    .stage-phone .pf-front .bezel{width:100%;height:100%;border-radius:44px;background:#050608;padding:4px}
+    .stage-phone .pf-front .screen{width:100%;height:100%;border-radius:40px;overflow:hidden;background:var(--soft-green)}
+    .stage-phone .pf-front .screen img{width:100%;height:100%;object-fit:cover;display:block}
+    /* BACK: brushed titanium */
+    .stage-phone .pf-back{transform:rotateY(180deg) translateZ(15px);
+      background:linear-gradient(155deg,#3c4870 0%,#293251 46%,#1b2238 100%)}
+    /* solid extruded body slabs (colour set per layer in JS) */
+    .stage-phone .slab{background:#33406a}
+    /* side buttons (small faces sitting on the rounded edge) */
+    .stage-phone .btn{position:absolute;top:50%;left:50%;width:30px;background:#12172a;border-radius:4px;
+      backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:inset 0 1px 0 rgba(140,155,200,.3)}
+    .stage-phone .btn.power{height:82px;margin:-110px 0 0 -15px;transform:rotateY(90deg) translateZ(145px)}
+    .stage-phone .btn.ctrl{height:42px;margin:24px 0 0 -15px;transform:rotateY(90deg) translateZ(145px)}
+    .stage-phone .btn.act{height:34px;margin:-140px 0 0 -15px;transform:rotateY(-90deg) translateZ(145px)}
+    .stage-phone .btn.vu{height:52px;margin:-84px 0 0 -15px;transform:rotateY(-90deg) translateZ(145px)}
+    .stage-phone .btn.vd{height:52px;margin:-22px 0 0 -15px;transform:rotateY(-90deg) translateZ(145px)}
+    /* iPhone 17 Pro camera plateau */
+    .stage-phone .cam-bar{position:absolute;top:0;left:0;width:100%;height:156px;
+      border-radius:48px 48px 40px 40px;
+      background:linear-gradient(160deg,#42507a,#28314f 60%,#20283f);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 6px 14px rgba(0,0,0,.28)}
+    .stage-phone .lens{position:absolute;width:46px;height:46px;border-radius:50%;
+      background:radial-gradient(circle at 37% 32%,#8b9ac2 0%,#232c45 46%,#05070e 100%);
+      box-shadow:0 0 0 5px #0e1320,inset 0 0 0 4px #090d18,inset 0 0 8px #000}
+    .stage-phone .lens.l1{top:20px;left:22px}
+    .stage-phone .lens.l2{top:80px;left:22px}
+    .stage-phone .lens.l3{top:50px;left:78px}
+    .stage-phone .flash{position:absolute;top:34px;left:224px;width:20px;height:20px;border-radius:50%;
+      background:radial-gradient(circle,#fffdf4,#c8c1a4);box-shadow:0 0 0 3px #0e1320}
+    .stage-phone .mic{position:absolute;top:92px;left:230px;width:9px;height:9px;border-radius:50%;background:#0a0e18;box-shadow:inset 0 0 0 2px #2a3450}
+    /* white swan silhouette on the back */
+    .stage-phone .swan{position:absolute;top:60%;left:50%;width:120px;transform:translate(-50%,-50%);
+      filter:brightness(0) invert(1);opacity:.85}
+    /* floor shadow (does not rotate) */
+    .stage-phone-wrap::after{content:"";position:absolute;left:50%;bottom:-30px;width:230px;height:38px;
+      transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(38,75,52,.4),transparent 70%);
+      filter:blur(7px);z-index:-1}
+    .stage-copy{position:absolute;top:50%;transform:translateY(-50%);width:min(38%,420px);z-index:3;will-change:opacity}
+    .stage-copy.left{left:7%}
+    .stage-copy.right{right:7%}
+    .stage-copy .feature-num{margin-bottom:14px}
+    .stage-copy h3{font-size:clamp(1.8rem,2.7vw,2.6rem);line-height:1.08;margin-bottom:16px}
+    .stage-copy p{color:var(--grey);font-size:1.08rem}
+    .stage-dots{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:4}
+    .stage-dots i{width:8px;height:8px;border-radius:50%;background:rgba(45,95,63,.22);transition:all .25s ease}
+    .stage-dots i.on{background:var(--green);width:22px;border-radius:5px}
+    @media(prefers-reduced-motion:reduce){
+      .stage{display:none!important}
+      #features .features-static{display:block!important}
+    }
+    @media(max-width:860px){
+      .feature{grid-template-columns:1fr;gap:30px}
+      .feature + .feature{margin-top:70px}
+      .feature.reverse .feature-media{order:0}
+      .feature-media .phone{width:238px}
+    }
+
+    /* Science */
+    .science-body{max-width:64ch}
+    .science-body p{color:var(--grey);margin-top:18px;font-size:1.06rem}
+    .science-body p:first-child{color:var(--ink)}
+    .cyclewave{margin:38px 0 26px;width:100%;max-width:640px}
+    .sec.mint .sec-title{color:var(--green)}
+
+    /* Testimonials */
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+    .quote{background:#FBF7F1;border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+    .quote p{font-family:'Fraunces';font-size:1.28rem;line-height:1.3;margin-bottom:22px}
+    .quote .who{display:flex;align-items:center;gap:12px}
+    .quote .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:.9rem}
+    .quote:nth-child(1) .av{background:var(--soft-green);color:var(--green)}
+    .quote:nth-child(2) .av{background:var(--soft-peach);color:var(--plum)}
+    .quote:nth-child(3) .av{background:var(--soft-green);color:var(--green)}
+    .quote .who span{color:var(--grey)}
+    @media(max-width:860px){.quotes{grid-template-columns:1fr}}
+    .journeys{margin-top:52px}
+    .journeys .jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:18px}
+    .jshot{border-radius:26px;overflow:hidden;background:#fff;box-shadow:0 24px 54px -30px rgba(38,75,52,.45)}
+    .jshot img{width:100%;display:block}
+    .disclaimer{margin-top:18px;font-size:.82rem;color:var(--grey-2)}
+    @media(max-width:860px){.journeys .jgrid{grid-template-columns:1fr;max-width:320px;margin:18px auto 0}}
+
+    /* Languages */
+    .langs{text-align:center;max-width:760px;margin:0 auto}
+    .langs .lead{margin:14px auto 0}
+    .lang-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
+    .lang-pills span{font-weight:600;color:var(--green);background:var(--soft-green);border-radius:999px;padding:10px 20px;font-size:.98rem}
+
+    /* Privacy */
+    .privacy{text-align:center;max-width:640px;margin:0 auto}
+    .privacy .lock{width:56px;height:56px;border-radius:16px;background:var(--white);display:grid;place-items:center;margin:0 auto 22px;box-shadow:0 10px 26px -18px rgba(38,75,52,.4)}
+    .privacy h2{color:var(--green);font-size:clamp(1.8rem,3.4vw,2.6rem)}
+    .privacy p{color:var(--ink);margin-top:14px;font-size:1.05rem}
+
+    /* CTA band */
+    .cta{background:var(--green);color:#EFEBE1;text-align:center;padding:96px 0}
+    .cta h2{font-size:clamp(2.2rem,4.6vw,3.6rem);color:#F3F0E9}
+    .cta p{color:#BFD3C3;margin:12px 0 32px;font-size:1.1rem}
+
+    /* Journal */
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+    .post{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 30px -22px rgba(38,75,52,.22);transition:transform .25s}
+    .post:hover{transform:translateY(-5px)}
+    .post .thumb{aspect-ratio:16/10;overflow:hidden}
+    .post .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .post .body{padding:24px}
+    .post .tag{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+    .post h3{font-size:1.32rem;margin:10px 0 10px}
+    .post p{color:var(--grey);font-size:.95rem;margin-bottom:16px}
+    .sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap}
+    @media(max-width:860px){.posts{grid-template-columns:1fr}}
+
+    /* Footer */
+    footer{background:var(--green-deep);color:#CFE0D4;padding:66px 0 30px}
+    .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+    footer .brand .name{color:#F3F0E9}
+    footer .brand .mark{background:#F3F0E9;border-radius:12px;padding:4px}
+    footer .tag{margin-top:14px;color:#9DB6A4;max-width:26ch}
+    footer h4{color:#EAF2EC;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-family:'Inter';font-weight:600}
+    footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+    footer ul a{color:#CFE0D4;font-size:.95rem}
+    footer ul a:hover{color:#fff}
+    .subscribe{margin-top:22px;display:flex;gap:8px;max-width:320px}
+    .subscribe input{flex:1;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:11px 18px;font-size:.9rem;outline:none}
+    .subscribe input::placeholder{color:#9DB6A4}
+    .subscribe button{background:#F3F0E9;color:var(--green-deep);border:0;border-radius:999px;padding:0 20px;font-weight:600;cursor:pointer}
+    .fbottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#9DB6A4;font-size:.85rem}
+    .socials{display:flex;gap:16px}
+    .socials a{color:#CFE0D4}
+    .socials a:hover{color:#fff}
+    @media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr;gap:32px}}
+    @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
+
+    /* Sticky mobile download bar */
+    .mobar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;
+      gap:12px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(250,247,242,.94);
+      backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+    .mobar b{font-family:'Fraunces';font-size:1.02rem;display:block}
+    .mobar small{color:var(--grey);font-size:.8rem}
+    @media(max-width:860px){.mobar{display:flex}body{padding-bottom:76px}}
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Aperia home">
+        <span class="mark"><img src="assets/aperia-logo.png" alt="Aperia" /></span>
+        <span class="name">Aperia</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#science">Science</a>
+        <a href="#stories">Stories</a>
+        <a href="#journal">Journal</a>
+        <a href="https://legal.aperiaskin.com/support.html">Support</a>
+        <a class="btn btn-green nav-cta" data-appstore href="#">Get the app</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('mm').classList.toggle('open')">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mm">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#science">Science</a>
+      <a href="#stories">Stories</a>
+      <a href="#journal">Journal</a>
+      <a href="https://legal.aperiaskin.com/support.html">Support</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <span id="top"></span>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <p class="eyebrow">Hormone-aware skin intelligence</p>
+        <h1>Your skin isn't random. It's hormonal — and it's not your fault.</h1>
+        <p class="lead">Aperia scans your skin, learns your patterns, and finally shows you <em>why</em> you break out. Free to start.</p>
+        <div class="hero-cta">
+          <a class="btn-appstore" data-appstore href="#"><svg width="20" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M16.5 1.3c.1 1-.3 2-.9 2.7-.7.8-1.7 1.4-2.7 1.3-.1-1 .4-2 .9-2.6.7-.8 1.9-1.4 2.7-1.4zM19.6 17c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.3 3.3-4 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.7-3.9-3.1C-.1 16.7-.4 11.6 1.4 8.9 2.6 7 4.5 5.9 6.3 5.9c1.7 0 2.8 1 4.2 1 1.4 0 2.2-1 4.2-1 1.5 0 3.1.8 4.2 2.3-3.7 2-3.1 7.3.7 8.8z"/></svg><span><small>Download on the</small><span class="store">App Store</span></span></a>
+          <a class="textlink" href="#how">See how it works ↓</a>
+        </div>
+        <p class="microline"><span class="dot"></span> Free to start · no card required</p>
+      </div>
+      <div class="reveal">
+        <div class="phone"><div class="screen"><img src="assets/screen-score.png" alt="Aperia skin score screen" /></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM ============ -->
+  <section class="sec white">
+    <div class="wrap problem">
+      <div class="reveal">
+        <h2 class="sec-title">You've tried everything.</h2>
+      </div>
+      <div class="reveal">
+        <p class="lead">The €12 cleanser. The €40 serum. The viral one everyone swore by. Each worked for a week, then quit. You were never given the one thing that matters: an explanation.</p>
+        <div class="callout"><p>Your breakouts follow a pattern. Aperia shows you the pattern.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <h2 class="sec-title reveal">How Aperia works</h2>
+      <div class="cards">
+        <div class="card reveal"><div class="num">01</div><h3>Scan your skin</h3><p>A quick face scan gives you a skin score, broken down by zone.</p></div>
+        <div class="card reveal"><div class="num">02</div><h3>Track what matters</h3><p>Your cycle, food, sleep and stress — in seconds a day.</p></div>
+        <div class="card reveal"><div class="num">03</div><h3>See your patterns</h3><p>Aperia connects the dots and shows you why your skin does what it does.</p></div>
+        <div class="card reveal"><div class="num">04</div><h3>Watch it change</h3><p>A monthly skin-journey report and a before/after you can actually see.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE STORY ============ -->
+  <section class="sec white" id="features">
+    <div class="wrap">
+      <p class="eyebrow reveal">Everything it does</p>
+      <h2 class="sec-title reveal" style="margin-top:10px">One app for the whole picture.</h2>
+      <p class="lead features-intro reveal">Aperia doesn't just scan your face. It watches your skin, your cycle and your habits together — and turns all of it into an answer. Scroll, and watch it turn.</p>
+    </div>
+
+    <!-- Desktop: one phone that slides + flips as you scroll -->
+    <div class="stage" id="flipStage" style="--flip-n:8" aria-hidden="true">
+      <div class="stage-sticky"><div class="stage-inner">
+        <canvas class="phone-gl" id="phoneGL"></canvas>
+        <div class="stage-copy left" id="stageCopy"></div>
+        <div class="stage-phone-wrap" id="flipPhoneWrap">
+          <div class="stage-phone" id="flipPhone">
+            <div class="lyr pf-front"><div class="bezel"><div class="screen"><img id="flipImg" src="assets/screen-score.png" alt="Aperia app screen" /></div></div></div>
+            <div class="lyr pf-back">
+              <div class="cam-bar"><span class="lens l1"></span><span class="lens l2"></span><span class="lens l3"></span><span class="flash"></span><span class="mic"></span></div>
+              <img class="swan" src="assets/aperia-logo.png" alt="" />
+            </div>
+            <span class="btn power"></span><span class="btn ctrl"></span>
+            <span class="btn act"></span><span class="btn vu"></span><span class="btn vd"></span>
+          </div>
+        </div>
+        <div class="stage-dots" id="stageDots"></div>
+      </div></div>
+    </div>
+
+    <!-- Mobile / reduced-motion fallback: static alternating rows -->
+    <div class="wrap features-static">
+      <div style="margin-top:8px">
+
+        <!-- 1 · Scan -->
+        <div class="feature reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-score.png" alt="Aperia skin score by zone" /></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>01 · Scan</span>
+            <h3>A skin score, zone by zone</h3>
+            <p>Point your camera and Aperia reads your skin in seconds — forehead, cheeks, nose, chin — and gives each area a clear score. No more staring in the mirror guessing. You get a real baseline you can actually track.</p>
+            <div class="ftags"><span>Face scan</span><span>Per-zone score</span><span>Seconds, not minutes</span></div>
+          </div>
+        </div>
+
+        <!-- 2 · Cycle -->
+        <div class="feature reverse reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-cycle.png" alt="Cycle and skin on one timeline" /></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>02 · Cycle</span>
+            <h3>Your cycle and your skin, on one timeline</h3>
+            <p>See where you are in your cycle and how your skin moves with it. The flare that shows up the same week every month finally has a name — a pattern, not bad luck, and not your fault.</p>
+            <div class="ftags"><span>Cycle phases</span><span>Skin overlay</span><span>Flare-week heads-up</span></div>
+          </div>
+        </div>
+
+        <!-- 3 · Daily log (NEEDS screen-log.png) -->
+        <div class="feature reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-log.png" alt="Daily log — food, sleep, stress, mood" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Daily log<br><small>drop in assets/screen-log.png</small></div></div></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>03 · Log</span>
+            <h3>Food, sleep, stress — in seconds a day</h3>
+            <p>A few taps capture how you slept, what you ate, your stress and your mood. These are the hidden inputs behind your skin — and Aperia remembers them for you, so the pattern can actually surface.</p>
+            <div class="ftags"><span>Sleep &amp; stress</span><span>Food &amp; water</span><span>Mood &amp; energy</span></div>
+          </div>
+        </div>
+
+        <!-- 4 · Insights -->
+        <div class="feature reverse reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-insights.png" alt="Plain-language insights" /></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>04 · Insights</span>
+            <h3>Finally, the <em>why</em> behind your breakouts</h3>
+            <p>Aperia connects the dots between your habits, your cycle and your skin, then explains it in plain language you can act on. Not another dashboard to decode — a real answer to the question you've been asking for years.</p>
+            <div class="ftags"><span>Pattern detection</span><span>Plain language</span><span>Personal to you</span></div>
+          </div>
+        </div>
+
+        <!-- 5 · Product scanner (NEEDS screen-scanner.png) -->
+        <div class="feature reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-scanner.png" alt="Product and ingredient scanner" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph peach" style="display:none"><div><div class="icn">▢</div>Product scanner<br><small>drop in assets/screen-scanner.png</small></div></div></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>05 · Products</span>
+            <h3>Scan any product before you buy it</h3>
+            <p>Point Aperia at a product or its ingredient list and it tells you what's likely to suit your skin and what might not. Stop pouring money into the next viral bottle and start choosing with a reason.</p>
+            <div class="ftags"><span>Barcode &amp; label scan</span><span>Ingredient read-out</span><span>Fit for your skin</span></div>
+          </div>
+        </div>
+
+        <!-- 6 · Trends (NEEDS screen-trends.png) -->
+        <div class="feature reverse reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-trends.png" alt="Trends over time" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Trends<br><small>drop in assets/screen-trends.png</small></div></div></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>06 · Trends</span>
+            <h3>Watch your skin change over time</h3>
+            <p>Your score, your zones and your patterns plotted across weeks and months. Real, visible progress — not a feeling you're trying to talk yourself into on a good-light day.</p>
+            <div class="ftags"><span>Score over time</span><span>Zone trends</span><span>Range filters</span></div>
+          </div>
+        </div>
+
+        <!-- 7 · Before/After -->
+        <div class="feature reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-beforeafter.png" alt="Before and after comparison" /></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>07 · Journey</span>
+            <h3>Your own before and after</h3>
+            <p>Line up any two scans side by side and see exactly what changed, zone by zone, with the score to back it up. Your proof, in your own skin — and the most shareable moment in the app.</p>
+            <div class="ftags"><span>Side-by-side</span><span>Per-zone deltas</span><span>Shareable card</span></div>
+          </div>
+        </div>
+
+        <!-- 8 · Reminders -->
+        <div class="feature reverse reveal">
+          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-notifications.png" alt="Smart reminders" /></div></div></div>
+          <div class="feature-copy">
+            <span class="feature-num"><span class="bar"></span>08 · Reminders</span>
+            <h3>Gentle nudges, never nagging</h3>
+            <p>A quiet reminder to scan, a heads-up before your usual flare week, a note when there's a fresh insight — each timed to your own rhythm, in your language, and fully in your control.</p>
+            <div class="ftags"><span>Smart timing</span><span>Quiet hours</span><span>Your call, always</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Monthly report — a document, shown on every screen -->
+    <div class="wrap" style="padding-top:18px">
+      <div class="feature reverse reveal">
+        <div class="feature-media"><div class="paper"><img src="assets/screen-report.png" alt="Monthly skin report" /></div></div>
+        <div class="feature-copy">
+          <span class="feature-num"><span class="bar"></span>And every month</span>
+          <h3>A monthly skin story, written for you</h3>
+          <p>Aperia pulls it all together into a calm, beautiful report — what changed, what it learned about your skin, and what's worth trying next. The whole journey in one place you'll actually want to open.</p>
+          <div class="ftags"><span>Monthly recap</span><span>What we learned</span><span>Worth trying next</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCIENCE ============ -->
+  <section class="sec mint" id="science">
+    <div class="wrap">
+      <h2 class="sec-title reveal">The idea nobody handed you at 14.</h2>
+      <!-- Cycle → skin rhythm graphic -->
+      <svg class="cyclewave reveal" viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 100 C 90 100, 120 40, 210 40 S 340 120, 430 120 S 560 60, 640 60" stroke="#2D5F3F" stroke-width="2.5" fill="none"/>
+        <circle cx="210" cy="40" r="5" fill="#4A7C59"/><circle cx="430" cy="120" r="5" fill="#B85450"/>
+        <text x="196" y="24" font-family="Inter" font-size="12" fill="#2D5F3F">Ovulation · clearer</text>
+        <text x="392" y="144" font-family="Inter" font-size="12" fill="#B85450">Week before · the flare</text>
+      </svg>
+      <div class="science-body reveal">
+        <p>Your hormones move in a rhythm, and for a lot of people skin moves with them. The same spots. The same week. Month after month. It isn't bad luck and it isn't a lack of discipline — it's a pattern that nobody ever showed you.</p>
+        <p>Once you can see the rhythm, everything gets calmer. You stop reacting to every new product and start noticing what your own skin actually responds to: where you are in your cycle, how you slept, how much stress the week held, what you ate.</p>
+        <p>Aperia's whole job is to make that visible. It doesn't promise to fix you. It shows you why.</p>
+        <p style="margin-top:22px"><a class="textlink" href="#journal">Read more in the Journal →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="sec" id="stories">
+    <div class="wrap">
+      <h2 class="sec-title reveal">Real people. Real patterns.</h2>
+      <div class="quotes">
+        <div class="quote reveal"><p>"For the first time, something explained my skin instead of just selling me another cream."</p><div class="who"><span class="av">S</span><span>Sofia</span></div></div>
+        <div class="quote reveal"><p>"I stopped guessing and started understanding. That changed everything."</p><div class="who"><span class="av">K</span><span>Karolina</span></div></div>
+        <div class="quote reveal"><p>"It wasn't my fault. I just needed to see the pattern."</p><div class="who"><span class="av">A</span><span>Anna</span></div></div>
+      </div>
+      <div class="journeys reveal">
+        <p class="eyebrow">Personal journeys</p>
+        <div class="jgrid">
+          <div class="jshot"><img src="assets/screen-beforeafter2.png" alt="A real before and after journey in Aperia" /></div>
+          <div class="jshot"><img src="assets/screen-beforeafter4.png" alt="A real before and after journey in Aperia" /></div>
+          <div class="jshot"><img src="assets/screen-beforeafte5.png" alt="A real before and after journey in Aperia" /></div>
+        </div>
+        <p class="disclaimer">Individual experiences. Aperia helps you understand your skin; results vary.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LANGUAGES ============ -->
+  <section class="sec">
+    <div class="wrap langs reveal">
+      <p class="eyebrow">Speaks your language</p>
+      <h2 class="sec-title" style="margin-top:10px">Aperia in seven languages.</h2>
+      <p class="lead">Every screen, every insight, every reminder — fully translated, not machine-guessed. Choose your language and the whole app follows.</p>
+      <div class="lang-pills">
+        <span>English</span><span>Slovenčina</span><span>Čeština</span><span>Español</span><span>Deutsch</span><span>Français</span><span>Русский</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY ============ -->
+  <section class="sec mint">
+    <div class="wrap privacy reveal">
+      <div class="lock">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D5F3F" stroke-width="2"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+      </div>
+      <h2>Your data is yours.</h2>
+      <p>Your photos are encrypted, never sold, and never shared. Private by design, GDPR-compliant.</p>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <h2>Ready to understand your skin?</h2>
+      <p>It's free to start.</p>
+      <a class="btn-appstore on-green" data-appstore href="#"><svg width="20" height="24" viewBox="0 0 24 24" fill="#111"><path d="M16.5 1.3c.1 1-.3 2-.9 2.7-.7.8-1.7 1.4-2.7 1.3-.1-1 .4-2 .9-2.6.7-.8 1.9-1.4 2.7-1.4zM19.6 17c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.3 3.3-4 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.7-3.9-3.1C-.1 16.7-.4 11.6 1.4 8.9 2.6 7 4.5 5.9 6.3 5.9c1.7 0 2.8 1 4.2 1 1.4 0 2.2-1 4.2-1 1.5 0 3.1.8 4.2 2.3-3.7 2-3.1 7.3.7 8.8z"/></svg><span><small>Download on the</small><span class="store">App Store</span></span></a>
+    </div>
+  </section>
+
+  <!-- ============ JOURNAL ============ -->
+  <section class="sec" id="journal">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title">From the Journal</h2>
+        <a class="textlink" href="#">All posts →</a>
+      </div>
+      <div class="posts">
+        <article class="post reveal"><a href="journal/why-breakouts-follow-your-cycle.html"><div class="thumb"><img src="assets/journal-1.png" alt="Why your breakouts follow your cycle" /></div></a><div class="body"><span class="tag">Patterns</span><h3><a href="journal/why-breakouts-follow-your-cycle.html">Why your breakouts follow your cycle</a></h3><p>The same week, the same spots. What that rhythm is telling you — and how to read it.</p><a class="textlink" href="journal/why-breakouts-follow-your-cycle.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/how-aperia-reads-your-skin.html"><div class="thumb"><img src="assets/journal-2.png" alt="How Aperia reads your skin" /></div></a><div class="body"><span class="tag">Inside Aperia</span><h3><a href="journal/how-aperia-reads-your-skin.html">How Aperia reads your skin</a></h3><p>What a zone-by-zone skin score actually measures, and why it changes day to day.</p><a class="textlink" href="journal/how-aperia-reads-your-skin.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/what-actually-drives-your-skin.html"><div class="thumb"><img src="assets/journal-3.png" alt="What actually drives your skin" /></div></a><div class="body"><span class="tag">Habits</span><h3><a href="journal/what-actually-drives-your-skin.html">Stop guessing: what actually drives your skin</a></h3><p>Sleep, stress, food, cycle. Four inputs, tracked in seconds, that explain most of it.</p><a class="textlink" href="journal/what-actually-drives-your-skin.html">Read →</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="brand"><span class="mark"><img src="assets/aperia-logo.png" alt="Aperia" /></span><span class="name">Aperia</span></div>
+          <p class="tag">Understand your skin.</p>
+          <form class="subscribe" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='Thanks ✓'">
+            <input type="email" required placeholder="Get skin insights in your inbox" aria-label="Email" />
+            <button type="submit">Join</button>
+          </form>
+          <!-- Wire the form to Buttondown/Formspree/Mailchimp later; JS above is a demo confirmation -->
+        </div>
+        <div><h4>Product</h4><ul><li><a href="#how">How it works</a></li><li><a href="#science">Science</a></li><li><a href="#journal">Journal</a></li><li><a data-appstore href="#">Get the app</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#stories">Stories</a></li><li><a href="https://legal.aperiaskin.com/support.html">Contact</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="https://legal.aperiaskin.com/terms-of-use.html">Terms of Use</a></li><li><a href="https://legal.aperiaskin.com/privacy-policy.html">Privacy Policy</a></li><li><a href="https://legal.aperiaskin.com/support.html">Support</a></li></ul></div>
+      </div>
+      <div class="fbottom">
+        <span>© <span id="yr"></span> Aperia. A self-knowledge tool, not a medical service.</span>
+        <div class="socials">
+          <a href="https://www.tiktok.com/@aperia66" aria-label="TikTok">TikTok</a>
+          <a href="https://www.instagram.com/aperia.app" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ STICKY MOBILE DOWNLOAD BAR ============ -->
+  <div class="mobar">
+    <div><b>Understand your skin</b><small>Free to start</small></div>
+    <a class="btn btn-green" data-appstore href="#"><svg width="16" height="19" viewBox="0 0 24 24" fill="#F3F0E9"><path d="M16.5 1.3c.1 1-.3 2-.9 2.7-.7.8-1.7 1.4-2.7 1.3-.1-1 .4-2 .9-2.6.7-.8 1.9-1.4 2.7-1.4zM19.6 17c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.3 3.3-4 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.7-3.9-3.1C-.1 16.7-.4 11.6 1.4 8.9 2.6 7 4.5 5.9 6.3 5.9c1.7 0 2.8 1 4.2 1 1.4 0 2.2-1 4.2-1 1.5 0 3.1.8 4.2 2.3-3.7 2-3.1 7.3.7 8.8z"/></svg>Download</a>
+  </div>
+
+  <script>
+    /* ---- Single place to set the App Store link (paste it once it's approved) ---- */
+    var APP_STORE_URL = "#"; // e.g. "https://apps.apple.com/app/idXXXXXXXXXX"
+    document.querySelectorAll('[data-appstore]').forEach(function(a){ a.href = APP_STORE_URL; });
+
+    /* ---- Scroll reveal ---- */
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* ---- Close mobile menu on link click ---- */
+    document.querySelectorAll('#mm a').forEach(function(a){ a.addEventListener('click',function(){ document.getElementById('mm').classList.remove('open'); }); });
+
+    /* ---- Year ---- */
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ---- Scroll-flip feature stage (desktop) ---- */
+    (function(){
+      var stage = document.getElementById('flipStage');
+      if(!stage) return;
+      var wrap  = document.getElementById('flipPhoneWrap');
+      var phone = document.getElementById('flipPhone');
+      var img   = document.getElementById('flipImg');
+      var copy  = document.getElementById('stageCopy');
+      var dotsWrap = document.getElementById('stageDots');
+
+      // build the solid titanium body: stacked full-silhouette slabs between front and back
+      (function(){
+        var dark=[30,38,62], light=[74,86,124], N=15;
+        for(var k=0;k<N;k++){
+          var z = -14 + k*(28/(N-1));
+          var t = 1 - Math.abs(z)/15;
+          var c = 'rgb('+Math.round(dark[0]+(light[0]-dark[0])*t)+','+Math.round(dark[1]+(light[1]-dark[1])*t)+','+Math.round(dark[2]+(light[2]-dark[2])*t)+')';
+          var s = document.createElement('div');
+          s.className = 'lyr slab';
+          s.style.transform = 'translateZ('+z.toFixed(2)+'px)';
+          s.style.background = c;
+          phone.appendChild(s);
+        }
+      })();
+
+      var steps = [
+        {img:'assets/screen-score.png',        num:'01 · Scan',     h:'A skin score, zone by zone',                     p:'Point your camera and Aperia reads your skin in seconds — forehead, cheeks, nose, chin — and gives each area a clear score. A real baseline you can actually track.'},
+        {img:'assets/screen-cycle.png',        num:'02 · Cycle',    h:'Your cycle and your skin, on one timeline',       p:'See where you are in your cycle and how your skin moves with it. The flare that shows up the same week every month finally has a name — a pattern, not bad luck.'},
+        {img:'assets/screen-log.png',          num:'03 · Log',      h:'Food, sleep, stress — in seconds a day',          p:'A few taps capture how you slept, what you ate, your stress and your mood — the hidden inputs behind your skin, remembered for you so the pattern can surface.'},
+        {img:'assets/screen-insights.png',     num:'04 · Insights', h:'Finally, the why behind your breakouts',          p:'Aperia connects the dots between your habits, your cycle and your skin, then explains it in plain language. A real answer to the question you’ve been asking for years.'},
+        {img:'assets/screen-scanner.png',      num:'05 · Products', h:'Scan any product before you buy it',              p:'Point Aperia at a product or its ingredient list and it tells you what’s likely to suit your skin and what might not. Stop pouring money into the next viral bottle.'},
+        {img:'assets/screen-trends.png',       num:'06 · Trends',   h:'Watch your skin change over time',                p:'Your score, your zones and your patterns plotted across weeks and months. Real, visible progress — not a feeling you’re trying to talk yourself into.'},
+        {img:'assets/screen-beforeafter.png',  num:'07 · Journey',  h:'Your own before and after',                       p:'Line up any two scans side by side and see exactly what changed, zone by zone, with the score to back it up. Your proof, in your own skin.'},
+        {img:'assets/screen-notifications.png',num:'08 · Reminders',h:'Gentle nudges, never nagging',                    p:'A reminder to scan, a heads-up before your usual flare week, a note when there’s a fresh insight — each timed to your rhythm, and fully in your control.'}
+      ];
+
+      // preload
+      steps.forEach(function(s){ var im = new Image(); im.src = s.img; });
+      // dots
+      steps.forEach(function(){ dotsWrap.appendChild(document.createElement('i')); });
+      var dots = dotsWrap.children;
+
+      var amp = Math.min(window.innerWidth * 0.20, 300);
+      var curImg = -1, curActive = -1, ticking = false;
+
+      function render(){
+        if(stage.offsetParent === null) return; // hidden (mobile / reduced-motion)
+        var rect  = stage.getBoundingClientRect();
+        var total = stage.offsetHeight - window.innerHeight;
+        var scrolled = Math.min(Math.max(-rect.top, 0), total);
+        var p   = total > 0 ? scrolled / total : 0;
+        var pos = p * (steps.length - 1);
+
+        // drive the WebGL phone if it's live, otherwise the CSS phone
+        if(window.__phoneGL && window.__phoneGL.ready){
+          window.__phoneGL.setPose(pos);
+        } else {
+          var slide = Math.cos(pos * Math.PI) * amp;
+          wrap.style.transform  = 'translate(-50%,-50%) translateX(' + slide.toFixed(1) + 'px)';
+          phone.style.transform = 'rotateY(' + (pos * 360).toFixed(2) + 'deg)';
+        }
+
+        // fade copy out near the flip midpoint, in at rest
+        copy.style.opacity = (0.1 + 0.9 * (Math.cos(pos * 2 * Math.PI) * 0.5 + 0.5)).toFixed(3);
+
+        var idx = Math.round(pos);
+        if(idx !== curImg){ curImg = idx; img.src = steps[idx].img; }   // swaps while phone is edge-on / back-facing
+        if(idx !== curActive){
+          curActive = idx;
+          var s = steps[idx];
+          var phoneOnRight = Math.cos(idx * Math.PI) > 0;
+          copy.className = 'stage-copy ' + (phoneOnRight ? 'left' : 'right');
+          copy.innerHTML = '<span class="feature-num"><span class="bar"></span>' + s.num + '</span><h3>' + s.h + '</h3><p>' + s.p + '</p>';
+          for(var j=0;j<dots.length;j++){ dots[j].className = (j===idx ? 'on' : ''); }
+        }
+      }
+
+      window.addEventListener('scroll', function(){
+        if(!ticking){ requestAnimationFrame(function(){ render(); ticking=false; }); ticking=true; }
+      }, {passive:true});
+      window.addEventListener('resize', function(){ amp = Math.min(window.innerWidth * 0.20, 300); render(); });
+      render();
+    })();
+  </script>
+
+  <!-- ===== Real 3D phone (Three.js). Falls back to the CSS phone if anything fails. ===== -->
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }}
+  </script>
+  <script type="module">
+    try {
+      const canvas = document.getElementById('phoneGL');
+      if (canvas && window.matchMedia('(min-width:861px)').matches &&
+          !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+
+        const THREE = await import('three');
+        const { RoundedBoxGeometry } = await import('three/addons/geometries/RoundedBoxGeometry.js');
+        const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.05;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
+        camera.position.set(0, 0, 9);
+
+        const pmrem = new THREE.PMREMGenerator(renderer);
+        scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+        const key = new THREE.DirectionalLight(0xffffff, 2.0); key.position.set(3, 5, 6); scene.add(key);
+        const rim = new THREE.DirectionalLight(0xbcd0ff, 1.1); rim.position.set(-5, 2, -4); scene.add(rim);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.28));
+
+        const phone = new THREE.Group(); scene.add(phone);
+
+        // screenshot canvas -> texture (projected onto the model's screen)
+        const sc = document.createElement('canvas'); sc.width = 560; sc.height = 1180;
+        const sctx = sc.getContext('2d');
+        const screenTex = new THREE.CanvasTexture(sc);
+        screenTex.colorSpace = THREE.SRGBColorSpace; screenTex.anisotropy = 8;
+        function roundRect(c,x,y,w,h,r){ c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+        function drawScreen(img){
+          const w=sc.width, h=sc.height, rad=Math.round(w*0.155);
+          sctx.clearRect(0,0,w,h);                       // transparent outside the rounded screen -> no corner peeking
+          sctx.save(); roundRect(sctx,0,0,w,h,rad); sctx.clip();
+          const ir=img.width/img.height, cr=w/h; let dw,dh,dx,dy;
+          if(ir>cr){ dh=h; dw=h*ir; dx=(w-dw)/2; dy=0; } else { dw=w; dh=w/ir; dx=0; dy=(h-dh)/2; }
+          sctx.drawImage(img, dx, dy, dw, dh); sctx.restore();
+          screenTex.needsUpdate = true;
+        }
+
+        // step screenshots (same order as the CSS stage)
+        const steps = ['assets/screen-score.png','assets/screen-cycle.png','assets/screen-log.png','assets/screen-insights.png','assets/screen-scanner.png','assets/screen-trends.png','assets/screen-beforeafter.png','assets/screen-notifications.png'];
+        const imgs = []; let curIdx = -1;
+        let modelReady = false, img0Ready = false, baseYaw = 0;
+        steps.forEach((s,i)=>{ const im = new Image(); im.onload = ()=>{ if(i===0){ drawScreen(im); img0Ready = true; tryReady(); } }; im.src = s; imgs[i] = im; });
+        function setImage(idx){ if(idx!==curIdx && imgs[idx] && imgs[idx].complete){ curIdx = idx; drawScreen(imgs[idx]); } }
+        function tryReady(){ if(modelReady && img0Ready && !(window.__phoneGL && window.__phoneGL.ready)) markReady(); }
+
+        // load the real iPhone 17 Pro model, then map the screen onto it
+        const gltfMod = await import('three/addons/loaders/GLTFLoader.js');
+        const loader = new gltfMod.GLTFLoader();
+        try { const dm = await import('three/addons/loaders/DRACOLoader.js'); const d = new dm.DRACOLoader(); d.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/'); loader.setDRACOLoader(d); } catch(e){}
+        try { const mm = await import('three/addons/libs/meshopt_decoder.module.js'); loader.setMeshoptDecoder(mm.MeshoptDecoder); } catch(e){}
+
+        function onLoaded(gltf){
+          const model = gltf.scene;
+          model.updateMatrixWorld(true);
+          let box = new THREE.Box3().setFromObject(model);
+          const size = new THREE.Vector3(); box.getSize(size);
+          const center = new THREE.Vector3(); box.getCenter(center);
+          model.position.sub(center);
+          const targetH = 3.5, s = targetH / size.y;
+          model.scale.setScalar(s);
+          phone.add(model); model.updateMatrixWorld(true);
+
+          // enumerate meshes, pick the display, and paint the screenshot onto its own material
+          const meshes = [];
+          model.traverse(o=>{ if(o.isMesh){
+            const wb = new THREE.Box3().setFromObject(o); const ws = new THREE.Vector3(); wb.getSize(ws); const wc = new THREE.Vector3(); wb.getCenter(wc);
+            const mat = Array.isArray(o.material) ? o.material[0] : o.material;
+            meshes.push({ o, ws, wc, mat, name:o.name||'', matName:(mat&&mat.name)||'' });
+          }});
+
+          // Find the screen mesh (material named OLED/screen, else brightest emissive, else largest thin flat)
+          const screenRx = /oled|screen|display|lcd|wallpaper|lockscreen/i;
+          let disp = meshes.find(m=>{ const arr=Array.isArray(m.o.material)?m.o.material:[m.o.material]; return arr.some(x=>x&&screenRx.test(x.name||'')); });
+          if(!disp){ let bestA=0; meshes.forEach(e=>{ if(e.mat&&e.mat.emissiveMap){ const a=e.ws.x*e.ws.y; if(a>bestA){bestA=a;disp=e;} } }); }
+          if(!disp){ let bestA=0; meshes.forEach(e=>{ const mn=Math.min(e.ws.x,e.ws.y,e.ws.z),mx=Math.max(e.ws.x,e.ws.y,e.ws.z); if(mn<mx*0.2){ const a=e.ws.x*e.ws.y; if(a>bestA){bestA=a;disp=e;} } }); }
+
+          let frontSign = 1;
+          if(disp){
+            const wb = new THREE.Box3().setFromObject(disp.o);
+            const c = new THREE.Vector3(); wb.getCenter(c);
+            const sz = new THREE.Vector3(); wb.getSize(sz);
+            frontSign = c.z >= 0 ? 1 : -1;
+
+            // darken the model's own emissive screen so it doesn't glow through our panel
+            (Array.isArray(disp.o.material)?disp.o.material:[disp.o.material]).forEach(m=>{
+              if(!m) return; if(m.emissive) m.emissive.set(0x000000); m.emissiveIntensity=0; if(m.color) m.color.set(0x000000); m.needsUpdate=true;
+            });
+
+            // our own screen panel — standard UVs, unlit, drawn ALWAYS ON TOP (depthTest off) so no glass dims it
+            screenTex.flipY = true; screenTex.wrapS = THREE.ClampToEdgeWrapping; screenTex.repeat.set(1,1); screenTex.offset.set(0,0);
+            const panel = new THREE.Mesh(
+              new THREE.PlaneGeometry(sz.x, sz.y),               // exact display bounds
+              new THREE.MeshBasicMaterial({ map:screenTex, transparent:true, toneMapped:false, depthTest:false })
+            );
+            panel.position.set(c.x, c.y, c.z + frontSign*0.03);
+            panel.rotation.y = frontSign > 0 ? 0 : Math.PI;   // faces the same way as the display
+            panel.renderOrder = 999;
+            phone.add(panel);
+            try { console.log('[Aperia 3D] screen panel over', disp.name||'(unnamed)', '| frontSign', frontSign); } catch(e){}
+          }
+          baseYaw = frontSign > 0 ? 0 : Math.PI;
+
+          modelReady = true; tryReady();
+        }
+
+        // try the model in a few likely locations (must live under the website/ folder to be served)
+        const MODEL_PATHS = [
+          'iphone-17-pro/source/iPhone 17 Pro.min.glb',
+          'iphone-17-pro/source/iPhone 17 Pro.glb',
+          'iphone-17-pro/iPhone 17 Pro.glb',
+          'assets/iphone-17-pro/source/iPhone 17 Pro.glb',
+          'models/iphone-17-pro/source/iPhone 17 Pro.glb',
+          'iphone-17-pro/source/iphone-17-pro.glb'
+        ];
+        (function tryPaths(i){
+          if(i >= MODEL_PATHS.length){ try { console.warn('[Aperia 3D] model not found in any known path — put iPhone 17 Pro.glb under website/iphone-17-pro/source/. Using CSS fallback.'); } catch(e){} return; }
+          loader.load(encodeURI(MODEL_PATHS[i]), onLoaded, undefined, ()=> tryPaths(i+1));
+        })(0);
+
+        const amp = 1.15; let firstOK = false; let lastPos = 0;
+        function resize(){
+          const w = canvas.clientWidth || canvas.parentElement.clientWidth;
+          const h = canvas.clientHeight || canvas.parentElement.clientHeight;
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h; camera.updateProjectionMatrix();
+        }
+        function renderOnce(){
+          renderer.render(scene, camera);
+          if(!firstOK){ firstOK = true; const wrap = document.querySelector('.stage-phone-wrap'); if(wrap) wrap.style.display='none'; canvas.style.display='block'; }
+        }
+        function setPose(pos){
+          lastPos = pos;
+          phone.rotation.y = baseYaw + pos * Math.PI * 2;
+          phone.rotation.x = -0.05;
+          phone.position.x = Math.cos(pos * Math.PI) * amp;
+          setImage(Math.round(pos));
+          renderOnce();
+        }
+        function markReady(){ resize(); window.__phoneGL = { ready:true, setPose:setPose }; setPose(0); }
+        window.addEventListener('resize', ()=>{ resize(); setPose(lastPos); });
+      }
+    } catch (e) { /* WebGL unavailable — the CSS phone stays visible */ }
+  </script>
+</body>
+</html>
