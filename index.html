@@ -403,11 +403,28 @@
 
     /* Sticky mobile download bar */
     .mobar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;justify-content:space-between;
-      gap:12px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(250,247,242,.94);
-      backdrop-filter:blur(10px);border-top:1px solid var(--line)}
-    .mobar b{font-family:'Fraunces';font-size:1.02rem;display:block}
-    .mobar small{color:var(--grey);font-size:.8rem}
-    @media(max-width:860px){.mobar{display:flex}body{padding-bottom:76px}}
+      gap:12px;padding:9px 16px calc(9px + env(safe-area-inset-bottom));background:rgba(250,247,242,.86);
+      backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);border-top:1px solid var(--line);
+      transform:translateY(140%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+    .mobar.show{transform:translateY(0)}
+    .mobar b{font-family:'Fraunces';font-size:.96rem;display:block;line-height:1.1}
+    .mobar small{color:var(--grey);font-size:.76rem}
+    .mobar .btn{padding:10px 20px;font-size:.92rem}
+    @media(max-width:860px){.mobar{display:flex}}
+
+    /* ---- Mobile polish: consistent rhythm + refined type scale ---- */
+    @media(max-width:860px){
+      .sec{padding:58px 0}
+      .cta{padding:64px 0}
+      .hero{padding:34px 0 22px}
+      .hero h1{font-size:clamp(2.05rem,8.5vw,3rem);margin:14px 0 18px}
+      .hero .lead{font-size:1.05rem}
+      .sec-title{font-size:clamp(1.6rem,6.8vw,2.3rem)}
+      .cta h2{font-size:clamp(1.95rem,8vw,2.8rem)}
+      .problem .callout p{font-size:1.28rem}
+      .science-body p{font-size:1rem}
+      .privacy p{font-size:1rem}
+    }
   </style>
 </head>
 <body>
@@ -803,6 +820,26 @@
 
     /* ---- Year ---- */
     document.getElementById('yr').textContent = new Date().getFullYear();
+
+    /* ---- Sticky mobile bar: reveal after the hero, hide near the final CTA ---- */
+    (function(){
+      var mobar = document.querySelector('.mobar');
+      if(!mobar) return;
+      var cta = document.querySelector('.cta');
+      var footer = document.querySelector('footer');
+      function toggle(){
+        var y = window.scrollY || window.pageYOffset || 0;
+        var past = y > window.innerHeight * 0.75;
+        var nearEnd = false;
+        var end = cta || footer;
+        if(end){ nearEnd = end.getBoundingClientRect().top < window.innerHeight * 0.92; }
+        mobar.classList.toggle('show', past && !nearEnd);
+      }
+      var t=false;
+      window.addEventListener('scroll', function(){ if(!t){ requestAnimationFrame(function(){ toggle(); t=false; }); t=true; } }, {passive:true});
+      window.addEventListener('resize', toggle);
+      toggle();
+    })();
 
     /* ---- Scroll-flip feature stage (desktop) ---- */
     (function(){
