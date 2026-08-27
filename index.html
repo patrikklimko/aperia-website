@@ -146,23 +146,27 @@
       padding:11px;box-shadow:var(--shadow);animation:float 7s ease-in-out infinite}
     .phone .screen{width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--soft-green)}
     .phone .screen img{width:100%;height:100%;object-fit:cover;display:block}
+    .phone .screen video{width:100%;height:100%;object-fit:cover;display:block}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-    /* Stylish 3D tilt on the hero phone (kept while it floats) */
+    /* Hero phone gently sways side to side — echoes the multi-angle scan */
     .hero .phone{
-      transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg);
       transform-origin:center;
-      animation:floatTilt 7s ease-in-out infinite;
-      box-shadow:-34px 44px 80px -34px rgba(38,75,52,.4);
+      animation:swayTilt 7s ease-in-out infinite;
+      box-shadow:-30px 44px 80px -34px rgba(38,75,52,.4);
     }
-    @keyframes floatTilt{
-      0%,100%{transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg) translateY(0)}
-      50%{transform:perspective(1600px) rotateY(-17deg) rotateX(5deg) rotate(-3deg) translateY(-16px)}
+    @keyframes swayTilt{
+      0%,100%{transform:perspective(1600px) rotateY(-9deg) rotateX(4deg) translateY(0)}
+      50%    {transform:perspective(1600px) rotateY(9deg)  rotateX(4deg) translateY(-12px)}
     }
     @media(max-width:860px){
       .hero-grid{grid-template-columns:1fr;text-align:left}
       .hero{padding:44px 0 30px}
       .phone{animation:none;margin-top:8px}
-      .hero .phone{animation:none;transform:perspective(1400px) rotateY(-10deg) rotate(-2deg)}
+      .hero .phone{animation:swayMobile 7s ease-in-out infinite}
+    }
+    @keyframes swayMobile{
+      0%,100%{transform:perspective(1400px) rotateY(-6deg)}
+      50%    {transform:perspective(1400px) rotateY(6deg)}
     }
 
     /* ---------- Placeholder blocks (REPLACE with <img>) ---------- */
@@ -474,7 +478,7 @@
         <p class="microline"><span class="dot"></span> Free to start · no card required</p>
       </div>
       <div class="reveal">
-        <div class="phone"><div class="screen"><img src="assets/screen-score.png" alt="Aperia skin score screen" /></div></div>
+        <div class="phone"><div class="screen"><video src="assets/hero-demo.mp4" poster="assets/hero-demo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Aperia scanning a face from five angles and showing the skin analysis"></video></div></div>
       </div>
     </div>
   </section>
