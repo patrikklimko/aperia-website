@@ -1098,6 +1098,8 @@
         }
         function markReady(){ window.__phoneGL = { ready:true, setPose:setPose }; goLive(); }
         window.addEventListener('resize', ()=>{ if(firstOK){ resize(); setPose(lastPos); } });
+        // Re-size + re-render whenever the stage container gets real dimensions (fixes desktop 0x0 canvas race)
+        if(window.ResizeObserver){ try { new ResizeObserver(()=>{ if(firstOK && canvas.clientWidth>0){ resize(); setPose(lastPos); } }).observe(canvas.parentElement); } catch(e){} }
       }
     } catch (e) { /* WebGL unavailable — the CSS phone stays visible */ }
   </script>
