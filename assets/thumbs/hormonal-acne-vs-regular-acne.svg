@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Hormonal vs regular breakouts">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF7F2"/><stop offset="1" stop-color="#E6EFE8"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5B3A52"/><stop offset="1" stop-color="#2D5F3F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <circle cx="1010" cy="150" r="300" fill="#5B3A52" opacity="0.10"/>
+  <circle cx="1080" cy="600" r="230" fill="#2D5F3F" opacity="0.08"/>
+  <g transform="translate(980,470)" opacity="0.9">
+    <circle r="120" fill="none" stroke="#5B3A52" stroke-width="10" stroke-opacity="0.35"/>
+    <circle r="120" fill="none" stroke="url(#acc)" stroke-width="12" stroke-dasharray="180 600" stroke-linecap="round" transform="rotate(-90)"/>
+    <circle cx="0" cy="-120" r="15" fill="#5B3A52"/>
+  </g>
+  <text x="90" y="150" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#5B3A52">UNDERSTANDING</text>
+  <text y="292" font-family="Fraunces, Georgia, serif" font-size="64" font-weight="500" fill="#1A1A1A"><tspan x="90" dy="0">Hormonal vs</tspan><tspan x="90" dy="74">regular breakouts</tspan></text>
+  <g transform="translate(90,640)">
+    <circle cx="16" cy="0" r="20" fill="#2D5F3F"/>
+    <text x="52" y="8" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#2D5F3F">Aperia</text>
+    <text x="188" y="8" font-family="Inter, Arial, sans-serif" font-size="22" fill="#5f5f5f">· Journal</text>
+  </g>
+</svg>

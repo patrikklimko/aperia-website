@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url><loc>https://aperiaskin.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://aperiaskin.com/about.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://aperiaskin.com/journal/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <url>
+    <loc>https://aperiaskin.com/journal/hormonal-skin-guide.html</loc>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aperiaskin.com/journal/hormonal-skin-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://aperiaskin.com/sk/hormonalna-plet-sprievodca.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://aperiaskin.com/cz/hormonalni-plet-pruvodce.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aperiaskin.com/journal/hormonal-skin-guide.html"/>
+  </url>
+
+  <url><loc>https://aperiaskin.com/journal/chin-and-jawline-breakouts.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/hormonal-acne-vs-regular-acne.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/skincare-for-your-cycle.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/skin-during-your-period.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/stress-cortisol-and-skin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/estrogen-progesterone-and-your-skin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/how-long-to-see-skin-results.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <url><loc>https://aperiaskin.com/journal/why-breakouts-follow-your-cycle.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/breakouts-before-your-period.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/is-your-skin-hormonal.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/how-aperia-reads-your-skin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/what-actually-drives-your-skin.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/food-stress-and-breakouts.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://aperiaskin.com/sk/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://aperiaskin.com/sk/hormonalna-plet-sprievodca.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://aperiaskin.com/cz/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://aperiaskin.com/cz/hormonalni-plet-pruvodce.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

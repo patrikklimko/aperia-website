@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deník Aperia — porozumějte své pleti</title>
+  <meta name="description" content="Srozumitelní průvodci hormonální pletí, vyrážkami a vzorci za nimi." />
+  <link rel="canonical" href="https://aperiaskin.com/cz/" />
+  <link rel="alternate" hreflang="en" href="https://aperiaskin.com/journal/" />
+  <link rel="alternate" hreflang="sk" href="https://aperiaskin.com/sk/" />
+  <link rel="alternate" hreflang="cs" href="https://aperiaskin.com/cz/" />
+  <link rel="alternate" hreflang="x-default" href="https://aperiaskin.com/journal/" />
+  <link rel="icon" type="image/png" href="../assets/aperia-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--cream:#FAF7F2;--white:#fff;--green:#2D5F3F;--plum:#5B3A52;--soft-green:#E6EFE8;--ink:#1A1A1A;--grey:#5f5f5f;--line:rgba(26,26,26,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    a{color:var(--green);text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;background:rgba(250,247,242,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+    .nav{padding:15px 0;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:34px;height:34px;object-fit:contain}
+    .brand b{font-family:'Fraunces',serif;color:var(--green);font-size:1.25rem;font-weight:600}
+    .head{padding:52px 0 6px}
+    .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--plum)}
+    h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(2.2rem,5vw,3rem);line-height:1.06;letter-spacing:-.02em;margin:12px 0 12px}
+    .lead{color:var(--grey);font-size:1.12rem;max-width:60ch}
+    .card{display:block;background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 12px 30px -22px rgba(38,75,52,.22);margin:34px 0 20px}
+    .card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+    .card .b{padding:24px 26px}
+    .card .tag{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+    .card h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;margin:8px 0 8px;color:var(--ink)}
+    .card p{color:var(--grey)}
+    .note{color:var(--grey);font-size:.95rem;margin:10px 0 60px}
+    .lang{font-size:.85rem;color:var(--grey);margin-top:8px}
+    .lang a{font-weight:600;margin:0 6px}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--grey);font-size:.85rem}
+    footer .fw{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    footer a{margin-right:16px}
+  </style>
+</head>
+<body>
+  <header><div class="wrap nav">
+    <a class="brand" href="../index.html"><img src="../assets/aperia-logo.png" alt="Aperia" /><b>Aperia</b></a>
+    <a href="../index.html" style="font-weight:600">Domů</a>
+  </div></header>
+  <main class="wrap">
+    <div class="head">
+      <p class="eyebrow">Deník</p>
+      <h1>Porozumějte své pleti</h1>
+      <p class="lead">Srozumitelní průvodci hormonální pletí a vzorci za vašimi vyrážkami — bez humbuku a strachu.</p>
+      <p class="lang">Číst v: <a href="https://aperiaskin.com/journal/">EN</a> <a href="https://aperiaskin.com/sk/">SK</a> <a href="https://aperiaskin.com/cz/">CZ</a></p>
+    </div>
+    <a class="card" href="hormonalni-plet-pruvodce.html">
+      <img src="../assets/thumbs/hormonal-skin-guide.svg" alt="Kompletní průvodce hormonální pletí" />
+      <div class="b"><span class="tag">Deník</span><h2>Kompletní průvodce hormonální pletí</h2><p>Cyklus, zóny, čtyři vlivy a jak číst svůj vlastní rytmus — vše na jednom místě.</p></div>
+    </a>
+    <p class="note">Připravujeme více článků v češtině. Zatím najdete celý Deník v angličtině.</p>
+  </main>
+  <footer><div class="wrap fw">
+    <span>&copy; <span id="yr"></span> Aperia. Nástroj sebepoznání, nikoli zdravotní služba.</span>
+    <span><a href="https://legal.aperiaskin.com/terms-of-use.html">Podmínky</a><a href="https://legal.aperiaskin.com/privacy-policy.html">Soukromí</a><a href="https://legal.aperiaskin.com/support.html">Podpora</a></span>
+  </div></footer>
+  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
