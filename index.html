@@ -23,6 +23,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- 3D phone: start downloading the engine + model during HTML parse, in parallel (not one-by-one later) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <!-- Import map MUST come before any modulepreload: addons import bare 'three',
+       and a preload that runs before the map is registered caches a resolve failure. -->
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }}
+  </script>
   <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" />
   <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js" />
   <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/BufferGeometryUtils.js" />
@@ -941,12 +949,6 @@
   </script>
 
   <!-- ===== Real 3D phone (Three.js). Falls back to the CSS phone if anything fails. ===== -->
-  <script type="importmap">
-  { "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }}
-  </script>
   <script type="module">
     try {
       const canvas = document.getElementById('phoneGL');
@@ -1123,7 +1125,7 @@
         // Re-size + re-render whenever the stage container gets real dimensions (fixes desktop 0x0 canvas race)
         if(window.ResizeObserver){ try { new ResizeObserver(()=>{ if(firstOK && canvas.clientWidth>0){ resize(); setPose(lastPos); } }).observe(canvas.parentElement); } catch(e){} }
       }
-    } catch (e) { /* WebGL unavailable — the CSS phone stays visible */ }
+    } catch (e) { console.warn('[Aperia 3D] init failed — CSS phone fallback', e); }
   </script>
 </body>
 </html>
