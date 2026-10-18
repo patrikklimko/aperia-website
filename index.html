@@ -21,6 +21,15 @@
   <!-- Fonts: Fraunces (display serif) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- 3D phone: start downloading the engine + model during HTML parse, in parallel (not one-by-one later) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/BufferGeometryUtils.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/environments/RoomEnvironment.js" />
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/meshopt_decoder.module.js" />
+  <link rel="preload" href="iphone-17-pro/source/iphone-17-pro.web.glb" as="fetch" type="model/gltf-binary" crossorigin />
+  <link rel="preload" href="assets/screen-score.webp" as="image" type="image/webp" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Structured data for search engines and AI assistants -->
@@ -524,7 +533,7 @@
         <div class="stage-copy left" id="stageCopy"></div>
         <div class="stage-phone-wrap" id="flipPhoneWrap">
           <div class="stage-phone" id="flipPhone">
-            <div class="lyr pf-front"><div class="bezel"><div class="screen"><img id="flipImg" src="assets/screen-score.png" alt="Aperia app screen" /></div></div></div>
+            <div class="lyr pf-front"><div class="bezel"><div class="screen"><img id="flipImg" src="assets/screen-score.webp" alt="Aperia app screen" /></div></div></div>
             <div class="lyr pf-back">
               <div class="cam-bar"><span class="lens l1"></span><span class="lens l2"></span><span class="lens l3"></span><span class="flash"></span><span class="mic"></span></div>
               <img class="swan" src="assets/aperia-logo.png" alt="" />
@@ -543,7 +552,7 @@
 
         <!-- 1 · Scan -->
         <div class="feature reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-score.png" alt="Aperia skin score by zone" /></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-score.webp" alt="Aperia skin score by zone" /></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>01 · Scan</span>
             <h3>A skin score, zone by zone</h3>
@@ -554,7 +563,7 @@
 
         <!-- 2 · Cycle -->
         <div class="feature reverse reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-cycle.png" alt="Cycle and skin on one timeline" /></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-cycle.webp" alt="Cycle and skin on one timeline" /></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>02 · Cycle</span>
             <h3>Your cycle and your skin, on one timeline</h3>
@@ -565,7 +574,7 @@
 
         <!-- 3 · Daily log (NEEDS screen-log.png) -->
         <div class="feature reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-log.png" alt="Daily log — food, sleep, stress, mood" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Daily log<br><small>drop in assets/screen-log.png</small></div></div></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-log.webp" alt="Daily log — food, sleep, stress, mood" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Daily log<br><small>drop in assets/screen-log.webp</small></div></div></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>03 · Log</span>
             <h3>Food, sleep, stress — in seconds a day</h3>
@@ -576,7 +585,7 @@
 
         <!-- 4 · Insights -->
         <div class="feature reverse reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-insights.png" alt="Plain-language insights" /></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-insights.webp" alt="Plain-language insights" /></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>04 · Insights</span>
             <h3>Finally, the <em>why</em> behind your breakouts</h3>
@@ -587,7 +596,7 @@
 
         <!-- 5 · Product scanner (NEEDS screen-scanner.png) -->
         <div class="feature reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-scanner.png" alt="Product and ingredient scanner" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph peach" style="display:none"><div><div class="icn">▢</div>Product scanner<br><small>drop in assets/screen-scanner.png</small></div></div></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-scanner.webp" alt="Product and ingredient scanner" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph peach" style="display:none"><div><div class="icn">▢</div>Product scanner<br><small>drop in assets/screen-scanner.webp</small></div></div></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>05 · Products</span>
             <h3>Scan any product before you buy it</h3>
@@ -598,7 +607,7 @@
 
         <!-- 6 · Trends (NEEDS screen-trends.png) -->
         <div class="feature reverse reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-trends.png" alt="Trends over time" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Trends<br><small>drop in assets/screen-trends.png</small></div></div></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-trends.webp" alt="Trends over time" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><div class="ph" style="display:none"><div><div class="icn">▢</div>Trends<br><small>drop in assets/screen-trends.webp</small></div></div></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>06 · Trends</span>
             <h3>Watch your skin change over time</h3>
@@ -609,7 +618,7 @@
 
         <!-- 7 · Before/After -->
         <div class="feature reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-beforeafter.png" alt="Before and after comparison" /></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-beforeafter.webp" alt="Before and after comparison" /></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>07 · Journey</span>
             <h3>Your own before and after</h3>
@@ -620,7 +629,7 @@
 
         <!-- 8 · Reminders -->
         <div class="feature reverse reveal">
-          <div class="feature-media"><div class="phone"><div class="screen"><img src="assets/screen-notifications.png" alt="Smart reminders" /></div></div></div>
+          <div class="feature-media"><div class="phone"><div class="screen"><img loading="lazy" decoding="async" src="assets/screen-notifications.webp" alt="Smart reminders" /></div></div></div>
           <div class="feature-copy">
             <span class="feature-num"><span class="bar"></span>08 · Reminders</span>
             <h3>Gentle nudges, never nagging</h3>
@@ -635,7 +644,7 @@
     <!-- Monthly report — a document, shown on every screen -->
     <div class="wrap" style="padding-top:18px">
       <div class="feature reverse reveal">
-        <div class="feature-media"><div class="paper"><img src="assets/screen-report.png" alt="Monthly skin report" /></div></div>
+        <div class="feature-media"><div class="paper"><img loading="lazy" decoding="async" src="assets/screen-report.webp" alt="Monthly skin report" /></div></div>
         <div class="feature-copy">
           <span class="feature-num"><span class="bar"></span>And every month</span>
           <h3>A monthly skin story, written for you</h3>
@@ -678,9 +687,9 @@
       <div class="journeys reveal">
         <p class="eyebrow">Personal journeys</p>
         <div class="jgrid">
-          <div class="jshot"><img src="assets/screen-beforeafter2.png" alt="A real before and after journey in Aperia" /></div>
-          <div class="jshot"><img src="assets/screen-beforeafter4.png" alt="A real before and after journey in Aperia" /></div>
-          <div class="jshot"><img src="assets/screen-beforeafte5.png" alt="A real before and after journey in Aperia" /></div>
+          <div class="jshot"><img loading="lazy" decoding="async" src="assets/screen-beforeafter2.webp" alt="A real before and after journey in Aperia" /></div>
+          <div class="jshot"><img loading="lazy" decoding="async" src="assets/screen-beforeafter4.webp" alt="A real before and after journey in Aperia" /></div>
+          <div class="jshot"><img loading="lazy" decoding="async" src="assets/screen-beforeafte5.webp" alt="A real before and after journey in Aperia" /></div>
         </div>
         <p class="disclaimer">Individual experiences. Aperia helps you understand your skin; results vary.</p>
       </div>
@@ -765,13 +774,13 @@
         <a class="textlink" href="journal/index.html">All posts →</a>
       </div>
       <div class="posts">
-        <article class="post reveal"><a href="journal/hormonal-skin-guide.html"><div class="thumb"><img src="assets/thumbs/hormonal-skin-guide.svg" alt="The complete guide to hormonal skin" /></div></a><div class="body"><span class="tag">Guide</span><h3><a href="journal/hormonal-skin-guide.html">The complete guide to hormonal skin</a></h3><p>The cycle, the zones, the four inputs, and how to read your own skin — all in one place.</p><a class="textlink" href="journal/hormonal-skin-guide.html">Read the guide →</a></div></article>
-        <article class="post reveal"><a href="journal/why-breakouts-follow-your-cycle.html"><div class="thumb"><img src="assets/journal-1.png" alt="Why your breakouts follow your cycle" /></div></a><div class="body"><span class="tag">Patterns</span><h3><a href="journal/why-breakouts-follow-your-cycle.html">Why your breakouts follow your cycle</a></h3><p>The same week, the same spots. What that rhythm is telling you — and how to read it.</p><a class="textlink" href="journal/why-breakouts-follow-your-cycle.html">Read →</a></div></article>
-        <article class="post reveal"><a href="journal/how-aperia-reads-your-skin.html"><div class="thumb"><img src="assets/journal-2.png" alt="How Aperia reads your skin" /></div></a><div class="body"><span class="tag">Inside Aperia</span><h3><a href="journal/how-aperia-reads-your-skin.html">How Aperia reads your skin</a></h3><p>What a zone-by-zone skin score actually measures, and why it changes day to day.</p><a class="textlink" href="journal/how-aperia-reads-your-skin.html">Read →</a></div></article>
-        <article class="post reveal"><a href="journal/what-actually-drives-your-skin.html"><div class="thumb"><img src="assets/journal-3.png" alt="What actually drives your skin" /></div></a><div class="body"><span class="tag">Habits</span><h3><a href="journal/what-actually-drives-your-skin.html">Stop guessing: what actually drives your skin</a></h3><p>Sleep, stress, food, cycle. Four inputs, tracked in seconds, that explain most of it.</p><a class="textlink" href="journal/what-actually-drives-your-skin.html">Read →</a></div></article>
-        <article class="post reveal"><a href="journal/breakouts-before-your-period.html"><div class="thumb"><img src="assets/journal-4.png" alt="Why you break out before your period" /></div></a><div class="body"><span class="tag">Patterns</span><h3><a href="journal/breakouts-before-your-period.html">Why do I break out before my period?</a></h3><p>Same week, same spots, every month. What that premenstrual flare is telling you.</p><a class="textlink" href="journal/breakouts-before-your-period.html">Read →</a></div></article>
-        <article class="post reveal"><a href="journal/is-your-skin-hormonal.html"><div class="thumb"><img src="assets/journal-5.png" alt="Is your skin following your hormones?" /></div></a><div class="body"><span class="tag">Understanding</span><h3><a href="journal/is-your-skin-hormonal.html">How to tell if your breakouts are hormonal</a></h3><p>The everyday signs your skin follows your cycle — and how to find out for sure.</p><a class="textlink" href="journal/is-your-skin-hormonal.html">Read →</a></div></article>
-        <article class="post reveal"><a href="journal/food-stress-and-breakouts.html"><div class="thumb"><img src="assets/journal-6.png" alt="Food, stress and your breakouts" /></div></a><div class="body"><span class="tag">Habits</span><h3><a href="journal/food-stress-and-breakouts.html">Do dairy, sugar and stress cause breakouts?</a></h3><p>It depends on you. How to find your own triggers instead of guessing from a list.</p><a class="textlink" href="journal/food-stress-and-breakouts.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/hormonal-skin-guide.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/thumbs/hormonal-skin-guide.svg" alt="The complete guide to hormonal skin" /></div></a><div class="body"><span class="tag">Guide</span><h3><a href="journal/hormonal-skin-guide.html">The complete guide to hormonal skin</a></h3><p>The cycle, the zones, the four inputs, and how to read your own skin — all in one place.</p><a class="textlink" href="journal/hormonal-skin-guide.html">Read the guide →</a></div></article>
+        <article class="post reveal"><a href="journal/why-breakouts-follow-your-cycle.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-1.webp" alt="Why your breakouts follow your cycle" /></div></a><div class="body"><span class="tag">Patterns</span><h3><a href="journal/why-breakouts-follow-your-cycle.html">Why your breakouts follow your cycle</a></h3><p>The same week, the same spots. What that rhythm is telling you — and how to read it.</p><a class="textlink" href="journal/why-breakouts-follow-your-cycle.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/how-aperia-reads-your-skin.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-2.webp" alt="How Aperia reads your skin" /></div></a><div class="body"><span class="tag">Inside Aperia</span><h3><a href="journal/how-aperia-reads-your-skin.html">How Aperia reads your skin</a></h3><p>What a zone-by-zone skin score actually measures, and why it changes day to day.</p><a class="textlink" href="journal/how-aperia-reads-your-skin.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/what-actually-drives-your-skin.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-3.webp" alt="What actually drives your skin" /></div></a><div class="body"><span class="tag">Habits</span><h3><a href="journal/what-actually-drives-your-skin.html">Stop guessing: what actually drives your skin</a></h3><p>Sleep, stress, food, cycle. Four inputs, tracked in seconds, that explain most of it.</p><a class="textlink" href="journal/what-actually-drives-your-skin.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/breakouts-before-your-period.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-4.webp" alt="Why you break out before your period" /></div></a><div class="body"><span class="tag">Patterns</span><h3><a href="journal/breakouts-before-your-period.html">Why do I break out before my period?</a></h3><p>Same week, same spots, every month. What that premenstrual flare is telling you.</p><a class="textlink" href="journal/breakouts-before-your-period.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/is-your-skin-hormonal.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-5.webp" alt="Is your skin following your hormones?" /></div></a><div class="body"><span class="tag">Understanding</span><h3><a href="journal/is-your-skin-hormonal.html">How to tell if your breakouts are hormonal</a></h3><p>The everyday signs your skin follows your cycle — and how to find out for sure.</p><a class="textlink" href="journal/is-your-skin-hormonal.html">Read →</a></div></article>
+        <article class="post reveal"><a href="journal/food-stress-and-breakouts.html"><div class="thumb"><img loading="lazy" decoding="async" src="assets/journal-6.webp" alt="Food, stress and your breakouts" /></div></a><div class="body"><span class="tag">Habits</span><h3><a href="journal/food-stress-and-breakouts.html">Do dairy, sugar and stress cause breakouts?</a></h3><p>It depends on you. How to find your own triggers instead of guessing from a list.</p><a class="textlink" href="journal/food-stress-and-breakouts.html">Read →</a></div></article>
       </div>
     </div>
   </section>
@@ -781,7 +790,7 @@
     <div class="wrap">
       <div class="fgrid">
         <div>
-          <div class="brand"><span class="mark"><img src="assets/aperia-logo.png" alt="Aperia" /></span><span class="name">Aperia</span></div>
+          <div class="brand"><span class="mark"><img loading="lazy" decoding="async" src="assets/aperia-logo.png" alt="Aperia" /></span><span class="name">Aperia</span></div>
           <p class="tag">Understand your skin.</p>
           <form class="subscribe" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='Thanks ✓'">
             <input type="email" required placeholder="Get skin insights in your inbox" aria-label="Email" />
@@ -872,18 +881,18 @@
       })();
 
       var steps = [
-        {img:'assets/screen-score.png',        num:'01 · Scan',     h:'A skin score, zone by zone',                     p:'Point your camera and Aperia reads your skin in seconds — forehead, cheeks, nose, chin — and gives each area a clear score. A real baseline you can actually track.'},
-        {img:'assets/screen-cycle.png',        num:'02 · Cycle',    h:'Your cycle and your skin, on one timeline',       p:'See where you are in your cycle and how your skin moves with it. The flare that shows up the same week every month finally has a name — a pattern, not bad luck.'},
-        {img:'assets/screen-log.png',          num:'03 · Log',      h:'Food, sleep, stress — in seconds a day',          p:'A few taps capture how you slept, what you ate, your stress and your mood — the hidden inputs behind your skin, remembered for you so the pattern can surface.'},
-        {img:'assets/screen-insights.png',     num:'04 · Insights', h:'Finally, the why behind your breakouts',          p:'Aperia connects the dots between your habits, your cycle and your skin, then explains it in plain language. A real answer to the question you’ve been asking for years.'},
-        {img:'assets/screen-scanner.png',      num:'05 · Products', h:'Scan any product before you buy it',              p:'Point Aperia at a product or its ingredient list and it tells you what’s likely to suit your skin and what might not. Stop pouring money into the next viral bottle.'},
-        {img:'assets/screen-trends.png',       num:'06 · Trends',   h:'Watch your skin change over time',                p:'Your score, your zones and your patterns plotted across weeks and months. Real, visible progress — not a feeling you’re trying to talk yourself into.'},
-        {img:'assets/screen-beforeafter.png',  num:'07 · Journey',  h:'Your own before and after',                       p:'Line up any two scans side by side and see exactly what changed, zone by zone, with the score to back it up. Your proof, in your own skin.'},
-        {img:'assets/screen-notifications.png',num:'08 · Reminders',h:'Gentle nudges, never nagging',                    p:'A reminder to scan, a heads-up before your usual flare week, a note when there’s a fresh insight — each timed to your rhythm, and fully in your control.'}
+        {img:'assets/screen-score.webp',        num:'01 · Scan',     h:'A skin score, zone by zone',                     p:'Point your camera and Aperia reads your skin in seconds — forehead, cheeks, nose, chin — and gives each area a clear score. A real baseline you can actually track.'},
+        {img:'assets/screen-cycle.webp',        num:'02 · Cycle',    h:'Your cycle and your skin, on one timeline',       p:'See where you are in your cycle and how your skin moves with it. The flare that shows up the same week every month finally has a name — a pattern, not bad luck.'},
+        {img:'assets/screen-log.webp',          num:'03 · Log',      h:'Food, sleep, stress — in seconds a day',          p:'A few taps capture how you slept, what you ate, your stress and your mood — the hidden inputs behind your skin, remembered for you so the pattern can surface.'},
+        {img:'assets/screen-insights.webp',     num:'04 · Insights', h:'Finally, the why behind your breakouts',          p:'Aperia connects the dots between your habits, your cycle and your skin, then explains it in plain language. A real answer to the question you’ve been asking for years.'},
+        {img:'assets/screen-scanner.webp',      num:'05 · Products', h:'Scan any product before you buy it',              p:'Point Aperia at a product or its ingredient list and it tells you what’s likely to suit your skin and what might not. Stop pouring money into the next viral bottle.'},
+        {img:'assets/screen-trends.webp',       num:'06 · Trends',   h:'Watch your skin change over time',                p:'Your score, your zones and your patterns plotted across weeks and months. Real, visible progress — not a feeling you’re trying to talk yourself into.'},
+        {img:'assets/screen-beforeafter.webp',  num:'07 · Journey',  h:'Your own before and after',                       p:'Line up any two scans side by side and see exactly what changed, zone by zone, with the score to back it up. Your proof, in your own skin.'},
+        {img:'assets/screen-notifications.webp',num:'08 · Reminders',h:'Gentle nudges, never nagging',                    p:'A reminder to scan, a heads-up before your usual flare week, a note when there’s a fresh insight — each timed to your rhythm, and fully in your control.'}
       ];
 
       // preload
-      steps.forEach(function(s){ var im = new Image(); im.src = s.img; });
+      window.addEventListener('load', function(){ steps.forEach(function(s){ var im = new Image(); im.src = s.img; }); });
       // dots
       steps.forEach(function(){ dotsWrap.appendChild(document.createElement('i')); });
       var dots = dotsWrap.children;
@@ -944,9 +953,20 @@
       if (canvas && !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
         const isMobile = window.matchMedia('(max-width:860px)').matches;
 
-        const THREE = await import('three');
-        const { RoundedBoxGeometry } = await import('three/addons/geometries/RoundedBoxGeometry.js');
-        const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+        // 1) Kick off the model download FIRST (served from the <head> preload cache),
+        // 2) then load all JS modules in PARALLEL instead of one after another.
+        const MODEL_URL = 'iphone-17-pro/source/iphone-17-pro.web.glb';
+        const modelBufP = fetch(MODEL_URL, { credentials: 'same-origin', mode: 'cors' })
+          .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); });
+        modelBufP.catch(() => {}); // handled below
+
+        const [THREE, envMod, gltfMod, meshMod] = await Promise.all([
+          import('three'),
+          import('three/addons/environments/RoomEnvironment.js'),
+          import('three/addons/loaders/GLTFLoader.js'),
+          import('three/addons/libs/meshopt_decoder.module.js').catch(() => null),
+        ]);
+        const { RoomEnvironment } = envMod;
 
         const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
         renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -983,18 +1003,19 @@
         }
 
         // step screenshots (same order as the CSS stage)
-        const steps = ['assets/screen-score.png','assets/screen-cycle.png','assets/screen-log.png','assets/screen-insights.png','assets/screen-scanner.png','assets/screen-trends.png','assets/screen-beforeafter.png','assets/screen-notifications.png'];
+        const steps = ['assets/screen-score.webp','assets/screen-cycle.webp','assets/screen-log.webp','assets/screen-insights.webp','assets/screen-scanner.webp','assets/screen-trends.webp','assets/screen-beforeafter.webp','assets/screen-notifications.webp'];
         const imgs = []; let curIdx = -1;
         let modelReady = false, img0Ready = false, baseYaw = 0;
-        steps.forEach((s,i)=>{ const im = new Image(); im.onload = ()=>{ if(i===0){ drawScreen(im); img0Ready = true; tryReady(); } }; im.src = s; imgs[i] = im; });
-        function setImage(idx){ if(idx!==curIdx && imgs[idx] && imgs[idx].complete){ curIdx = idx; drawScreen(imgs[idx]); } }
+        // Only the first screen is needed to show the phone; the other 7 load after it's on screen
+        function loadStep(i){ if(imgs[i]) return; const im = new Image(); im.decoding = 'async'; im.onload = ()=>{ if(i===0){ drawScreen(im); img0Ready = true; tryReady(); } else if(i===curIdx){ drawScreen(im); } }; im.src = steps[i]; imgs[i] = im; }
+        loadStep(0);
+        function loadRestOfSteps(){ for(let i=1;i<steps.length;i++) loadStep(i); }
+        function setImage(idx){ if(idx===curIdx) return; loadStep(idx); if(imgs[idx] && imgs[idx].complete){ curIdx = idx; drawScreen(imgs[idx]); } }
         function tryReady(){ if(modelReady && img0Ready && !(window.__phoneGL && window.__phoneGL.ready)) markReady(); }
 
-        // load the real iPhone 17 Pro model, then map the screen onto it
-        const gltfMod = await import('three/addons/loaders/GLTFLoader.js');
+        // load the real iPhone 17 Pro model (meshopt-compressed, no Draco needed), then map the screen onto it
         const loader = new gltfMod.GLTFLoader();
-        try { const dm = await import('three/addons/loaders/DRACOLoader.js'); const d = new dm.DRACOLoader(); d.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/'); loader.setDRACOLoader(d); } catch(e){}
-        try { const mm = await import('three/addons/libs/meshopt_decoder.module.js'); loader.setMeshoptDecoder(mm.MeshoptDecoder); } catch(e){}
+        if (meshMod && meshMod.MeshoptDecoder) { try { loader.setMeshoptDecoder(meshMod.MeshoptDecoder); } catch(e){} }
 
         function onLoaded(gltf, onBad){
           if(modelReady) return;
@@ -1057,19 +1078,19 @@
         }
 
         // try the model in a few likely locations (must live under the website/ folder to be served)
+        // Fallbacks only used if the optimized model fails for some reason
         const MODEL_PATHS = [
           'iphone-17-pro/source/iPhone 17 Pro.min.glb',
-          'iphone-17-pro/source/iPhone 17 Pro.glb',
-          'iphone-17-pro/iPhone 17 Pro.glb',
-          'assets/iphone-17-pro/source/iPhone 17 Pro.glb',
-          'models/iphone-17-pro/source/iPhone 17 Pro.glb',
-          'iphone-17-pro/source/iphone-17-pro.glb'
+          'iphone-17-pro/source/iPhone 17 Pro.glb'
         ];
-        (function tryPaths(i){
-          if(i >= MODEL_PATHS.length){ try { console.warn('[Aperia 3D] model not found in any known path — put iPhone 17 Pro.glb under website/iphone-17-pro/source/. Using CSS fallback.'); } catch(e){} return; }
-          try { console.log('[Aperia 3D] loading', MODEL_PATHS[i]); } catch(e){}
+        function tryPaths(i){
+          if(i >= MODEL_PATHS.length){ try { console.warn('[Aperia 3D] model not found — using CSS fallback.'); } catch(e){} return; }
           loader.load(encodeURI(MODEL_PATHS[i]), (g)=> onLoaded(g, ()=> tryPaths(i+1)), undefined, ()=> tryPaths(i+1));
-        })(0);
+        }
+        // Fast path: the optimized model (~0.57 MB) that has been downloading since <head>
+        modelBufP
+          .then(buf => loader.parse(buf, '', (g)=> onLoaded(g, ()=> tryPaths(0)), ()=> tryPaths(0)))
+          .catch(()=> tryPaths(0));
 
         const amp = 1.15; let firstOK = false; let lastPos = 0;
         function resize(){
@@ -1097,7 +1118,7 @@
           setImage(Math.round(pos));
           renderOnce();
         }
-        function markReady(){ window.__phoneGL = { ready:true, setPose:setPose }; goLive(); }
+        function markReady(){ window.__phoneGL = { ready:true, setPose:setPose }; goLive(); loadRestOfSteps(); }
         window.addEventListener('resize', ()=>{ if(firstOK){ resize(); setPose(lastPos); } });
         // Re-size + re-render whenever the stage container gets real dimensions (fixes desktop 0x0 canvas race)
         if(window.ResizeObserver){ try { new ResizeObserver(()=>{ if(firstOK && canvas.clientWidth>0){ resize(); setPose(lastPos); } }).observe(canvas.parentElement); } catch(e){} }
