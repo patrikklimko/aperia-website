@@ -1,0 +1,18 @@
+# One clean URL per page (no .html) — permanent redirects; forced (!) because the .html files exist.
+/about.html                                             /about                                        301!
+/cz/hormonalni-plet-pruvodce.html                       /cz/hormonalni-plet-pruvodce                  301!
+/journal/breakouts-before-your-period.html              /journal/breakouts-before-your-period         301!
+/journal/chin-and-jawline-breakouts.html                /journal/chin-and-jawline-breakouts           301!
+/journal/estrogen-progesterone-and-your-skin.html       /journal/estrogen-progesterone-and-your-skin  301!
+/journal/food-stress-and-breakouts.html                 /journal/food-stress-and-breakouts            301!
+/journal/hormonal-acne-vs-regular-acne.html             /journal/hormonal-acne-vs-regular-acne        301!
+/journal/hormonal-skin-guide.html                       /journal/hormonal-skin-guide                  301!
+/journal/how-aperia-reads-your-skin.html                /journal/how-aperia-reads-your-skin           301!
+/journal/how-long-to-see-skin-results.html              /journal/how-long-to-see-skin-results         301!
+/journal/is-your-skin-hormonal.html                     /journal/is-your-skin-hormonal                301!
+/journal/skin-during-your-period.html                   /journal/skin-during-your-period              301!
+/journal/skincare-for-your-cycle.html                   /journal/skincare-for-your-cycle              301!
+/journal/stress-cortisol-and-skin.html                  /journal/stress-cortisol-and-skin             301!
+/journal/what-actually-drives-your-skin.html            /journal/what-actually-drives-your-skin       301!
+/journal/why-breakouts-follow-your-cycle.html           /journal/why-breakouts-follow-your-cycle      301!
+/sk/hormonalna-plet-sprievodca.html                     /sk/hormonalna-plet-sprievodca                301!
