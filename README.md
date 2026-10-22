@@ -35,3 +35,12 @@ In your host's dashboard, add the custom domain `aperiaskin.com` (and `www`). It
 - HTTPS is issued automatically.
 
 Keep `legal.aperiaskin.com` exactly as it is — this site is the apex `aperiaskin.com` and links out to it.
+
+## Campaign links (App Store attribution)
+Every "Download / Get the app" button has a static App Store campaign link:
+`https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=<campaign>&mt=8`
+
+- `pt=129049378` — Aperia's App Store provider token (never changes).
+- `ct=` — where the tap came from: `home-nav`, `home-hero`, `home-final-cta`, `home-footer`, `home-mobile-bar`, `about-cta`, `j-<article-slug>-cta`, `cz-…`, `sk-…`.
+- Results: App Store Connect → Analytics → Acquisition → Campaigns (shows once enough installs come in; Apple hides campaigns with very few installs).
+- New page or tool → copy the link and give it its own `ct` (max 40 characters).
