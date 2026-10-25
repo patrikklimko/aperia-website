@@ -24,8 +24,9 @@
      "mainEntityOfPage":"https://aperiaskin.com/guides/is-my-skincare-breaking-me-out","inLanguage":"en"},
     {"@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://aperiaskin.com/"},
-      {"@type":"ListItem","position":2,"name":"Guides","item":"https://aperiaskin.com/guides/"},
-      {"@type":"ListItem","position":3,"name":"Is my skincare breaking me out?","item":"https://aperiaskin.com/guides/is-my-skincare-breaking-me-out"}]},
+      {"@type":"ListItem","position":2,"name":"Journal","item":"https://aperiaskin.com/journal/"},
+      {"@type":"ListItem","position":3,"name":"Guides","item":"https://aperiaskin.com/guides/"},
+      {"@type":"ListItem","position":4,"name":"Is my skincare breaking me out?","item":"https://aperiaskin.com/guides/is-my-skincare-breaking-me-out"}]},
     {"@type":"FAQPage","mainEntity":[
       {"@type": "Question", "name": "How do I know if my skincare is breaking me out?", "acceptedAnswer": {"@type": "Answer", "text": "Look at timing and location. Spots that start days to weeks after adding a product, in places you don't usually break out, point toward that product. Spots in your usual zones that come and go with your cycle may not be related. Change one product at a time to know for sure."}},
       {"@type": "Question", "name": "Why is my skin worse after starting a skincare routine?", "acceptedAnswer": {"@type": "Answer", "text": "Starting several products at once makes it hard to tell. A rich formula may clog pores, a fragrance or preservative may irritate, or an exfoliating active may cause temporary sensitivity. The timing may also overlap with your pre-period week. Go back to basics, then reintroduce products one at a time."}},
@@ -104,22 +105,26 @@
       footer .fw{flex-direction:column;align-items:center;text-align:center}
     }
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="nav">
       <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
-      <span class="navlinks"><a href="/guides/">Guides</a><a href="/cycle-skin-calculator">Calculator</a></span>
+      <span class="navlinks"><a href="/journal/">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=g-is-my-skincare-breaking-me-out-nav&mt=8">Get the app</a></span>
     </div>
   </header>
 
   <main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Is my skincare breaking me out?</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/journal/">Journal</a> › <a href="/guides/">Guides</a> › Is my skincare breaking me out?</nav>
     <article>
       <p class="eyebrow">Products &amp; ingredients</p>
       <h1>Is my skincare breaking me out? How to find the product</h1>
       <p class="standfirst">New spots after a new routine don't always mean a bad product. Here's how to tell a product reaction from purging or cycle timing, and a calm, one-change-at-a-time way to find the culprit.</p>
       <p class="meta">Updated October 2026 · 8 min read · Aperia Guides</p>
+
+      <div class="phase-hero" data-phase="all"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(26,26,26,.06)" stroke-width="13"/></svg><div><small>Your cycle in the background</small><b>Reactions can show up in any phase</b><span>Knowing your phase helps you tell a product reaction from a cycle pattern. Tap a phase to explore.</span></div></div>
 
       <!-- REVIEW (enable only after the dermatologist has reviewed this page):
       <p class="review">Medically reviewed by <a href="/medical-review">REVIEWER NAME, TITLE</a> · REVIEW DATE</p>
@@ -171,6 +176,7 @@
       <p>Many people notice more oil and breakouts in the week or so before their period. Start a new product mid-cycle and your first two weeks of use may land right in that window, so the product gets blamed for spots your skin might have made anyway.</p>
       <p>Check your cycle day when the spots appeared. If they cluster before your period, sit in your usual zones and fade after it, timing is a strong suspect. One easy fix: start new products just after your period.</p>
 
+      <div data-mini-calc></div>
       <a class="calc-card" href="/cycle-skin-calculator">
         <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
         <div><b>Is it the product, or just your pre-period week?</b><span>Enter your last period and cycle length to see which phase your new spots fell in. <em>Try the free cycle skin calculator →</em></span></div>
@@ -260,5 +266,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>

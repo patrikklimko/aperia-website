@@ -132,12 +132,12 @@
     /* ---------- Header ---------- */
     header{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-    .brand{display:flex;align-items:center;gap:10px}
+    .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
     .brand .mark{width:42px;height:42px;display:grid;place-items:center;flex-shrink:0}
     .brand .mark img{width:100%;height:100%;object-fit:contain}
     .brand .name{font-family:'Fraunces','Fraunces Fallback',Georgia,serif;font-size:1.4rem;color:var(--green);font-weight:600}
-    .nav-links{display:flex;align-items:center;gap:30px}
-    .nav-links a{color:var(--grey);font-weight:500;font-size:.95rem;transition:color .15s}
+    .nav-links{display:flex;align-items:center;gap:clamp(18px,2.2vw,30px);margin-left:28px}
+    .nav-links a{color:var(--grey);font-weight:500;font-size:.95rem;white-space:nowrap;transition:color .15s}
     .nav-links a:hover{color:var(--ink)}
     .menu-btn{display:none;background:none;border:0;cursor:pointer}
     @media(max-width:860px){
@@ -463,11 +463,8 @@
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
         <a href="#science">Science</a>
-        <a href="/cycle-skin-calculator">Cycle calculator</a>
-        <a href="#stories">Stories</a>
-        <a href="/guides/">Guides</a>
-        <a href="/guides/">Guides</a>
-      <a href="#journal">Journal</a>
+        <a href="/journal/">Journal</a>
+        <a href="/cycle-skin-calculator">Calculator</a>
         <a href="https://legal.aperiaskin.com/support.html">Support</a>
         <a class="btn btn-green nav-cta" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=home-nav&mt=8">Get the app</a>
       </nav>
@@ -479,9 +476,9 @@
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
       <a href="#science">Science</a>
-      <a href="/cycle-skin-calculator">Cycle calculator</a>
       <a href="#stories">Stories</a>
-      <a href="#journal">Journal</a>
+      <a href="/journal/">Journal &amp; guides</a>
+      <a href="/cycle-skin-calculator">Cycle skin calculator</a>
       <a href="https://legal.aperiaskin.com/support.html">Support</a>
     </div>
   </header>

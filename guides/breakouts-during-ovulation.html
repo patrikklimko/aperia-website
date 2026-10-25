@@ -24,8 +24,9 @@
      "mainEntityOfPage":"https://aperiaskin.com/guides/breakouts-during-ovulation","inLanguage":"en"},
     {"@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://aperiaskin.com/"},
-      {"@type":"ListItem","position":2,"name":"Guides","item":"https://aperiaskin.com/guides/"},
-      {"@type":"ListItem","position":3,"name":"Breakouts during ovulation","item":"https://aperiaskin.com/guides/breakouts-during-ovulation"}]},
+      {"@type":"ListItem","position":2,"name":"Journal","item":"https://aperiaskin.com/journal/"},
+      {"@type":"ListItem","position":3,"name":"Guides","item":"https://aperiaskin.com/guides/"},
+      {"@type":"ListItem","position":4,"name":"Breakouts during ovulation","item":"https://aperiaskin.com/guides/breakouts-during-ovulation"}]},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Why do I get acne during ovulation?","acceptedAnswer":{"@type":"Answer","text":"Around ovulation, estrogen is at its highest and an LH surge triggers the egg's release. Testosterone also tends to peak around mid-cycle, and androgens stimulate your oil glands. Oil output may keep climbing in the days after ovulation. For many people, that mix lines up with new breakouts around mid-cycle or soon after."}},
       {"@type":"Question","name":"Is acne during ovulation week normal?","acceptedAnswer":{"@type":"Answer","text":"Many people notice skin changes around mid-cycle, so you're far from alone. Most research focuses on the week before a period, but one survey found that about a quarter of women with cycle-linked breakouts said their skin was worse throughout the cycle. If your breakouts are painful, scarring or getting worse, see a doctor or dermatologist."}},
@@ -103,22 +104,26 @@
       footer .fw{flex-direction:column;align-items:center;text-align:center}
     }
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="nav">
       <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
-      <span class="navlinks"><a href="/guides/">Guides</a><a href="/cycle-skin-calculator">Calculator</a></span>
+      <span class="navlinks"><a href="/journal/">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=g-breakouts-during-ovulation-nav&mt=8">Get the app</a></span>
     </div>
   </header>
 
   <main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Breakouts during ovulation</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/journal/">Journal</a> › <a href="/guides/">Guides</a> › Breakouts during ovulation</nav>
     <article>
       <p class="eyebrow">Cycle &amp; skin</p>
       <h1>Acne during ovulation: why mid-cycle breakouts happen (and why they often show up late)</h1>
       <p class="standfirst">Acne during ovulation catches a lot of people off guard. Your period is two weeks away, yet new spots are appearing. Here's what your hormones are doing mid-cycle, why breakouts often surface days after the shift that set them off, and how to work out your own timing.</p>
       <p class="meta">Updated October 2026 · 8 min read · Aperia Guides</p>
+
+      <div class="phase-hero" data-phase="ovulation"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(26,26,26,.06)" stroke-width="13"/></svg><div><small>This guide focuses on</small><b>The ovulation window</b><span>Around days 13–15 of a typical 28-day cycle, when estrogen peaks and oil can pick up. Tap a phase to explore.</span></div></div>
 
       <!-- REVIEW (enable only after the dermatologist has reviewed this page):
       <p class="review">Medically reviewed by <a href="/medical-review">REVIEWER NAME, TITLE</a> · REVIEW DATE</p>
@@ -172,6 +177,7 @@
       </ul>
       <p>Knowing about the lag helps you avoid blaming the wrong thing. A spot on day 16 may have more to do with what happened around day 12 than with the face mask you tried last night.</p>
 
+      <div data-mini-calc></div>
       <a class="calc-card" href="/cycle-skin-calculator">
         <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
         <div><b>When is your estimated ovulation window?</b><span>Enter your last period and cycle length to see roughly where mid-cycle falls, so you can line it up with your skin. It's an estimate for skin tracking only, not for contraception or fertility planning. <em>Try the free cycle skin calculator →</em></span></div>
@@ -276,5 +282,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>

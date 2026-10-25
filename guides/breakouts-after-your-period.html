@@ -24,8 +24,9 @@
      "mainEntityOfPage":"https://aperiaskin.com/guides/breakouts-after-your-period","inLanguage":"en"},
     {"@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://aperiaskin.com/"},
-      {"@type":"ListItem","position":2,"name":"Guides","item":"https://aperiaskin.com/guides/"},
-      {"@type":"ListItem","position":3,"name":"Breakouts after your period","item":"https://aperiaskin.com/guides/breakouts-after-your-period"}]},
+      {"@type":"ListItem","position":2,"name":"Journal","item":"https://aperiaskin.com/journal/"},
+      {"@type":"ListItem","position":3,"name":"Guides","item":"https://aperiaskin.com/guides/"},
+      {"@type":"ListItem","position":4,"name":"Breakouts after your period","item":"https://aperiaskin.com/guides/breakouts-after-your-period"}]},
     {"@type":"FAQPage","mainEntity":[
       {"@type": "Question", "name": "Is it normal to get acne after your period?", "acceptedAnswer": {"@type": "Answer", "text": "It can happen, but it is less common than breaking out before. In one survey of women with cycle-linked breakouts, only 3 percent said their skin was worst after their period, while most said the week before. A spot that appears just after your period may have started forming earlier, or may be linked to something else, like a new product, stress or poor sleep."}},
       {"@type": "Question", "name": "Why do I break out after my period ends?", "acceptedAnswer": {"@type": "Answer", "text": "Breakouts take time to develop. Many inflamed spots start as clogged pores you can't see yet, so a spot that surfaces after your period may have been forming in the days before it. If new spots keep appearing a week or more after your period, look at other changes, such as products, sleep, stress or hair care."}},
@@ -103,22 +104,26 @@
       footer .fw{flex-direction:column;align-items:center;text-align:center}
     }
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="nav">
       <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
-      <span class="navlinks"><a href="/guides/">Guides</a><a href="/cycle-skin-calculator">Calculator</a></span>
+      <span class="navlinks"><a href="/journal/">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=g-breakouts-after-your-period-nav&mt=8">Get the app</a></span>
     </div>
   </header>
 
   <main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › Breakouts after your period</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/journal/">Journal</a> › <a href="/guides/">Guides</a> › Breakouts after your period</nav>
     <article>
       <p class="eyebrow">Cycle &amp; skin</p>
       <h1>Acne after period? Why breakouts can show up once it's over</h1>
       <p class="standfirst">Your period's over, so why the new spots? Here's why breakouts can lag behind your cycle, what dry or oily skin after your period may mean, and how to tell a late arrival from a new trigger.</p>
       <p class="meta">Updated October 2026 · 9 min read · Aperia Guides</p>
+
+      <div class="phase-hero" data-phase="follicular"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(26,26,26,.06)" stroke-width="13"/></svg><div><small>This guide focuses on</small><b>The days after your period</b><span>The early follicular phase, when spots that started last week can still surface. Tap a phase to explore.</span></div></div>
 
       <!-- REVIEW (enable only after the dermatologist has reviewed this page):
       <p class="review">Medically reviewed by <a href="/medical-review">REVIEWER NAME, TITLE</a> · REVIEW DATE</p>
@@ -152,6 +157,7 @@
       <p>Researchers don't have an exact day-by-day timeline, and it likely varies by person and by spot. But it means a pore that clogged in the pre-period part of your cycle may only become a visible spot once your period has finished.</p>
       <p>The good news is that this kind of lag usually settles. In the same survey of women with cycle-linked breakouts, 77 percent said their spots cleared within a week of their period ending [1]. For more on that earlier stage, see our guide to <a href="/journal/breakouts-before-your-period">breakouts before your period</a>.</p>
 
+      <div data-mini-calc></div>
       <a class="calc-card" href="/cycle-skin-calculator">
         <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
         <div><b>Which cycle day are you on today?</b><span>Enter your last period to see your phase and what skin often does around now. <em>Try the free cycle skin calculator →</em></span></div>
@@ -253,5 +259,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>

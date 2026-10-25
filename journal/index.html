@@ -12,6 +12,7 @@
   <meta property="og:image" content="https://aperiaskin.com/assets/journal-1.png" />
   <link rel="canonical" href="https://aperiaskin.com/journal/" />
   <link rel="icon" type="image/png" href="../assets/aperia-logo.png" />
+  <style>.nav-get{white-space:nowrap}</style>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -32,7 +33,7 @@
     .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--plum)}
     h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.06;letter-spacing:-.02em;margin:12px 0 12px}
     .lead{color:var(--grey);font-size:1.12rem;max-width:56ch}
-    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:40px 0 70px}
+    .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:20px 0 70px}
     .post{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 12px 30px -22px rgba(38,75,52,.22);transition:transform .25s}
     .post:hover{transform:translateY(-5px)}
     .post .thumb{aspect-ratio:16/10;overflow:hidden}
@@ -48,12 +49,14 @@
     footer .fw{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     footer a{margin-right:16px}
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="brand" href="/"><img src="../assets/aperia-logo.png" alt="Aperia" /><b>Aperia</b></a>
-      <a class="back" href="/">← Home</a>
+      <span class="navlinks"><a href="/journal/" aria-current="page">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=journal-nav&mt=8">Get the app</a></span>
     </div>
   </header>
 
@@ -64,6 +67,19 @@
       <p class="lead">Plain-language guides to hormonal skin, breakouts and the patterns behind them — no hype, no fear, just how to finally read your own skin.</p>
     </div>
 
+    <section class="shelf" id="guides" aria-labelledby="guides-h">
+      <div class="shelf-head"><h2 id="guides-h">Deep-dive guides</h2><a href="/guides/">All guides →</a></div>
+      <div class="shelf-row">
+        <a class="gtile" style="--c:var(--period)" href="/guides/why-skin-looks-better-on-your-period"><small>Cycle &amp; skin</small><b>Why your skin looks better on your period</b><span>What your hormones are doing when your skin glows — and when it really peaks.</span><em>Read the guide →</em></a>
+        <a class="gtile" style="--c:var(--ovulation)" href="/guides/breakouts-during-ovulation"><small>Cycle &amp; skin</small><b>Breakouts during ovulation</b><span>Why mid-cycle spots happen and why they often show up days later.</span><em>Read the guide →</em></a>
+        <a class="gtile" style="--c:var(--follicular)" href="/guides/breakouts-after-your-period"><small>Cycle &amp; skin</small><b>Breaking out after your period</b><span>A late arrival from last week, or a new trigger? How to tell.</span><em>Read the guide →</em></a>
+        <a class="gtile" style="--c:var(--luteal)" href="/guides/is-my-skincare-breaking-me-out"><small>Products &amp; ingredients</small><b>Is my skincare breaking me out?</b><span>Reaction, purging or cycle timing — a one-change-at-a-time method.</span><em>Read the guide →</em></a>
+        <a class="gtile" style="--c:var(--watch)" href="/guides/what-is-causing-my-breakouts"><small>Skin log method</small><b>How to find out what’s causing your breakouts</b><span>A simple 4-week skin log and how to read the pattern.</span><em>Read the guide →</em></a>
+        <a class="gtile calc" href="/cycle-skin-calculator"><small>Free tool</small><b>Which phase is your skin in today?</b><span>Enter your last period date and see your cycle as a ring, day by day.</span><em>Open the calculator →</em></a>
+      </div>
+    </section>
+
+    <h2 class="articles-h">Articles</h2>
     <div class="posts">
       <article class="post"><a href="/journal/hormonal-skin-guide"><div class="thumb"><img src="../assets/thumbs/hormonal-skin-guide.svg" alt="The complete guide to hormonal skin" /></div></a><div class="body"><span class="tag">Guide</span><h2><a href="/journal/hormonal-skin-guide">The complete guide to hormonal skin</a></h2><p>The cycle, the zones, the four inputs, and how to read your own skin — everything in one place.</p><a class="rd" href="/journal/hormonal-skin-guide">Read the guide →</a></div></article>
       <article class="post"><a href="/journal/chin-and-jawline-breakouts"><div class="thumb"><img src="../assets/thumbs/chin-and-jawline-breakouts.svg" alt="Why do I break out on my chin and jawline?" /></div></a><div class="body"><span class="tag">Patterns</span><h2><a href="/journal/chin-and-jawline-breakouts">Why do I break out on my chin and jawline?</a></h2><p>The most hormonally reactive zone on your face — and what it's telling you.</p><a class="rd" href="/journal/chin-and-jawline-breakouts">Read →</a></div></article>
@@ -94,5 +110,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>

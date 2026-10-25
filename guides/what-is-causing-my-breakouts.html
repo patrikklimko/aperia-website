@@ -33,8 +33,9 @@
      "mainEntityOfPage":"https://aperiaskin.com/guides/what-is-causing-my-breakouts","inLanguage":"en"},
     {"@type":"BreadcrumbList","itemListElement":[
       {"@type":"ListItem","position":1,"name":"Home","item":"https://aperiaskin.com/"},
-      {"@type":"ListItem","position":2,"name":"Guides","item":"https://aperiaskin.com/guides/"},
-      {"@type":"ListItem","position":3,"name":"What's causing my breakouts?","item":"https://aperiaskin.com/guides/what-is-causing-my-breakouts"}]},
+      {"@type":"ListItem","position":2,"name":"Journal","item":"https://aperiaskin.com/journal/"},
+      {"@type":"ListItem","position":3,"name":"Guides","item":"https://aperiaskin.com/guides/"},
+      {"@type":"ListItem","position":4,"name":"What's causing my breakouts?","item":"https://aperiaskin.com/guides/what-is-causing-my-breakouts"}]},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"How do I know what is causing my acne?","acceptedAnswer":{"@type":"Answer","text":"Most people can't tell from memory, because breakouts often show up days or weeks after the trigger. A short daily log works better: cycle day, sleep, stress, notable foods, product changes, a same-light photo and where new spots appear. After one full cycle, and ideally three, look for what repeats before your worse days."}},
       {"@type":"Question","name":"How long does it take to find a breakout trigger?","acceptedAnswer":{"@type":"Answer","text":"Give it at least one full cycle, about four weeks, to get a baseline. Many patterns only become trustworthy after two or three cycles, because one bad week can be a coincidence. Product reactions can be slower still: the American Academy of Dermatology notes that blemishes from makeup can take anywhere from a few days to 6 months to appear."}},
@@ -112,22 +113,26 @@
       footer .fw{flex-direction:column;align-items:center;text-align:center}
     }
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="nav">
       <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
-      <span class="navlinks"><a href="/guides/">Guides</a><a href="/cycle-skin-calculator">Calculator</a></span>
+      <span class="navlinks"><a href="/journal/">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=g-what-is-causing-my-breakouts-nav&mt=8">Get the app</a></span>
     </div>
   </header>
 
   <main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › What's causing my breakouts?</nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/journal/">Journal</a> › <a href="/guides/">Guides</a> › What's causing my breakouts?</nav>
     <article>
       <p class="eyebrow">Skin log method</p>
       <h1>How to find out what's causing your acne breakouts: a 4-week skin log</h1>
       <p class="standfirst">If you've typed "how to find out what is causing my acne" into a search bar at midnight, you're in good company. The honest answer is that most people can't spot their triggers from memory. A simple daily log, kept for one cycle and then three, usually can.</p>
       <p class="meta">Updated October 2026 · 9 min read · Aperia Guides</p>
+
+      <div class="phase-hero" data-phase="all"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(26,26,26,.06)" stroke-width="13"/></svg><div><small>One input of several</small><b>Your cycle is part of the picture</b><span>Sleep, stress, food and products matter too. Tap a phase to see what often happens when.</span></div></div>
 
       <!-- REVIEW (enable only after the dermatologist has reviewed this page):
       <p class="review">Medically reviewed by <a href="/medical-review">REVIEWER NAME, TITLE</a> · REVIEW DATE</p>
@@ -180,6 +185,7 @@
       <p>Pick a fixed time, ideally every morning before skincare, and spend two minutes on it. A log you keep for 90 days beats a beautiful one you drop after a week.</p>
       <p>For the first month, <strong>don't change anything on purpose</strong>. You're building a baseline: what your skin normally does across a cycle. Without it, you can't tell whether a later change helped or you just hit a calmer week.</p>
 
+      <div data-mini-calc></div>
       <a class="calc-card" href="/cycle-skin-calculator">
         <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
         <div><b>What cycle day is it today?</b><span>Find your phase and cycle day so your log starts on the right foot. <em>Try the free cycle skin calculator →</em></span></div>
@@ -293,5 +299,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>

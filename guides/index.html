@@ -91,17 +91,20 @@
     .gcard span{font-size:.95rem;color:#555}
     .gcard em{font-style:normal;color:var(--green);font-weight:600;font-size:.9rem;margin-top:auto}
   </style>
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("g-anim")</script>
+  <link rel="stylesheet" href="/assets/guide.css" />
 </head>
 <body>
   <header>
     <div class="nav">
       <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
-      <span class="navlinks"><a href="/journal/">Journal</a><a href="/cycle-skin-calculator">Calculator</a></span>
+      <span class="navlinks"><a href="/journal/" aria-current="page">Journal</a><a class="hide-xs" href="/cycle-skin-calculator">Calculator</a><a class="nav-get" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=guides-hub-nav&mt=8">Get the app</a></span>
     </div>
   </header>
   <main class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/journal/">Journal</a> › Guides</nav>
     <section class="ghero">
-      <p class="eyebrow">Aperia Guides</p>
+      <p class="eyebrow">Journal · Deep-dive guides</p>
       <h1>Your skin, your cycle, your pattern</h1>
       <p class="standfirst">Clear, evidence-based guides on how your cycle, sleep, stress, food and skincare can show up on your skin — and how to find what's true for you.</p>
     </section>
@@ -109,6 +112,7 @@
       <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
       <div><b>Which phase is your skin in today?</b><span>Enter your last period date. <em>Try the free cycle skin calculator →</em></span></div>
     </a>
+    <div data-mini-calc></div>
     <div class="grid"><a class="gcard" href="/guides/why-skin-looks-better-on-your-period"><small>Cycle &amp; skin</small><b>Why your skin looks better on your period</b><span>If your skin glows around your period, here is what your hormones are doing — and when the glow really peaks.</span><em>Read the guide →</em></a><a class="gcard" href="/guides/breakouts-during-ovulation"><small>Cycle &amp; skin</small><b>Breakouts during ovulation</b><span>Your period is two weeks away, yet new spots appear. Why mid-cycle breakouts happen and why they often show up late.</span><em>Read the guide →</em></a><a class="gcard" href="/guides/breakouts-after-your-period"><small>Cycle &amp; skin</small><b>Breaking out after your period</b><span>Period over, new spots? Why breakouts can lag behind your cycle — and how to tell a late arrival from a new trigger.</span><em>Read the guide →</em></a><a class="gcard" href="/guides/is-my-skincare-breaking-me-out"><small>Products &amp; ingredients</small><b>Is my skincare breaking me out?</b><span>Product reaction, purging or cycle timing? A calm, one-change-at-a-time way to find the culprit.</span><em>Read the guide →</em></a><a class="gcard" href="/guides/what-is-causing-my-breakouts"><small>Skin log method</small><b>How to find out what's causing your breakouts</b><span>A simple 4-week skin log — what to record each day and how to read the patterns.</span><em>Read the guide →</em></a></div>
     <p style="margin:24px 0 0"><a href="/journal/" style="font-weight:600">More in the Aperia Journal →</a></p>
   </main>
@@ -119,5 +123,6 @@
     </div>
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+  <script src="/assets/guide.js" defer></script>
 </body>
 </html>
