@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6781202703" />
+  <title>Cycle Skin Calculator: Which Phase Is Your Skin In Today? — Aperia</title>
+  <meta name="description" content="Free cycle skin calculator. Enter your last period date to see which cycle phase you're in today, what skin often does in this phase, and when your next breakout 'watch week' starts. Nothing you enter leaves your device." />
+  <link rel="canonical" href="https://aperiaskin.com/cycle-skin-calculator" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Which phase is your skin in today?" />
+  <meta property="og:description" content="See your cycle phase, what your skin often does right now, and when your next 'watch week' starts. Free, private, in your browser." />
+  <meta property="og:url" content="https://aperiaskin.com/cycle-skin-calculator" />
+  <meta property="og:image" content="https://aperiaskin.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="/assets/aperia-logo.png" />
+  <link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!--
+    CONTENT STATUS: phase descriptions, tracking tips and FAQ answers are a DRAFT
+    awaiting dermatologist review. Add "Medically reviewed by …" only after review.
+    PRIVACY: all calculation happens in this page's JavaScript. No storage, no
+    cookies, no analytics, no network requests with the entered dates.
+  -->
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Aperia Cycle Skin Calculator","url":"https://aperiaskin.com/cycle-skin-calculator","applicationCategory":"HealthApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Aperia","url":"https://aperiaskin.com/"},"description":"Estimate your menstrual cycle phase today and what skin often does in that phase."},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Why does my skin break out before my period?","acceptedAnswer":{"@type":"Answer","text":"In the days before a period, the balance of hormones shifts and many people notice more oil and breakouts, often around the chin and jawline. Not everyone gets them, and the timing differs from person to person — which is why tracking your own pattern is useful."}},
+      {"@type":"Question","name":"Which cycle phase is my skin usually at its best?","acceptedAnswer":{"@type":"Answer","text":"Many people find their skin looks clearest and most even in the days after their period and around ovulation, when estrogen is higher. Your own pattern may be different."}},
+      {"@type":"Question","name":"How accurate is this calculator?","acceptedAnswer":{"@type":"Answer","text":"It gives an estimate based on the cycle length you enter, assuming ovulation about 14 days before your next period. Real cycles vary month to month, so treat the dates as a guide, not a prediction. It is not suitable for contraception or fertility planning."}},
+      {"@type":"Question","name":"Does this work if I use hormonal contraception?","acceptedAnswer":{"@type":"Answer","text":"Most hormonal contraceptives change or pause the natural cycle phases, so the phase estimates here may not apply. Tracking your skin over time can still show you your own patterns."}},
+      {"@type":"Question","name":"Is my data stored?","acceptedAnswer":{"@type":"Answer","text":"No. Everything is calculated in your browser. Nothing you enter is saved or sent anywhere."}}
+    ]}
+  ]}
+  </script>
+
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
+    :root{--cream:#FAF7F2;--green:#2D5F3F;--plum:#5B3A52;--soft-green:#E6EFE8;--ink:#1A1A1A;--grey:#5f5f5f;--line:rgba(26,26,26,.08);
+      --menstrual:#C98B8B;--follicular:#8FB79A;--ovulation:#E3C36B;--luteal:#B9A3C7;--watch:#7D5A8C}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+    a{color:var(--green);text-decoration:none}
+    .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+    header{position:sticky;top:0;background:rgba(250,247,242,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+    .nav{max-width:1080px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{width:34px;height:34px;object-fit:contain}
+    .brand b{font-family:'Fraunces',serif;color:var(--green);font-size:1.25rem;font-weight:600}
+    .navlink{font-weight:600;font-size:.92rem}
+    h1{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(2rem,5.2vw,3rem);line-height:1.08;letter-spacing:-.02em;margin:14px 0 14px}
+    h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.55rem;margin:40px 0 12px;line-height:1.2}
+    h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.2rem;margin:20px 0 6px}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--plum)}
+    .intro{font-size:1.12rem;color:#333;margin-bottom:26px}
+    section.top{padding:38px 0 10px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 22px 54px -36px rgba(38,75,52,.35)}
+    form .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+    @media(max-width:640px){form .row{grid-template-columns:1fr}}
+    label{display:block;font-size:.85rem;font-weight:600;color:#333;margin-bottom:6px}
+    input{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1.5px solid rgba(26,26,26,.15);border-radius:12px;background:var(--cream);color:var(--ink)}
+    input:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent}
+    .hint{font-size:.78rem;color:#777;margin-top:4px}
+    .go{margin-top:18px;width:100%;font:inherit;font-weight:600;font-size:1.02rem;background:var(--green);color:#F3F0E9;border:0;border-radius:999px;padding:14px 22px;cursor:pointer}
+    .go:hover{background:#244e33}
+    .privacy{font-size:.82rem;color:#5d6b60;margin-top:12px;text-align:center}
+    .error{color:#a3352f;font-size:.9rem;margin-top:12px}
+    #result{margin-top:22px}
+    .today{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .badge{display:inline-block;border-radius:999px;padding:6px 14px;font-weight:600;font-size:.9rem;color:#1a1a1a}
+    .daynum{font-family:'Fraunces',serif;font-size:2.2rem;line-height:1}
+    .phase-title{font-family:'Fraunces',serif;font-size:1.6rem;margin:16px 0 6px}
+    .phase-text{font-size:1.06rem;color:#2a2a2a}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+    @media(max-width:640px){.cols{grid-template-columns:1fr}}
+    .box{background:var(--cream);border-radius:16px;padding:16px 18px}
+    .box h4{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);margin-bottom:8px}
+    .box ul{padding-left:18px}
+    .box li{margin:4px 0;font-size:.97rem}
+    .strip-wrap{margin-top:22px}
+    .strip{display:grid;grid-template-columns:repeat(35,1fr);gap:2px;margin-top:8px}
+    .strip div{height:30px;border-radius:4px;position:relative}
+    .strip .today-cell{outline:2.5px solid var(--ink);outline-offset:1px}
+    .strip-labels{display:grid;grid-template-columns:repeat(35,1fr);gap:2px;font-size:.66rem;color:#777;margin-top:4px}
+    .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:.8rem;color:#444}
+    .legend span{display:inline-flex;align-items:center;gap:6px}
+    .legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+    .dates{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+    @media(max-width:640px){.dates{grid-template-columns:1fr}}
+    .date-box{border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+    .date-box small{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:#777}
+    .date-box b{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:500}
+    .cta{background:var(--green);color:#EFEBE1;border-radius:22px;padding:30px 26px;text-align:center;margin:26px 0 6px}
+    .cta h3{color:#F3F0E9;font-size:1.5rem;margin:0 0 6px}
+    .cta p{color:#BFD3C3;margin-bottom:18px}
+    .btn{display:inline-flex;gap:10px;align-items:center;background:#F3F0E9;color:var(--green);font-weight:600;border-radius:999px;padding:13px 26px}
+    .content p{margin:0 0 16px;font-size:1.06rem;color:#2a2a2a}
+    .phases-table{width:100%;border-collapse:collapse;margin:12px 0 8px;font-size:.96rem}
+    .phases-table th,.phases-table td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+    .phases-table th{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#666}
+    details{border-bottom:1px solid var(--line);padding:14px 0}
+    summary{font-family:'Fraunces',serif;font-size:1.15rem;cursor:pointer}
+    details p{margin-top:8px}
+    .disclaimer{font-size:.82rem;color:#8a8a8a;border-top:1px solid var(--line);margin-top:36px;padding-top:20px}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--grey);font-size:.85rem;margin-top:40px}
+    footer .fw{max-width:1080px;margin:0 auto;padding:0 22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    footer a{margin-right:16px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="34" height="34" alt="Aperia" /><b>Aperia</b></a>
+      <a class="navlink" href="/journal/">Journal</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="top">
+      <p class="eyebrow">Free tool</p>
+      <h1>Cycle skin calculator: which phase is your skin in today?</h1>
+      <p class="intro">Enter the first day of your last period. You'll see your estimated cycle phase today, what skin often does in this phase, what's worth tracking, and when your next breakout "watch week" starts.</p>
+
+      <div class="card">
+        <form id="calc" novalidate>
+          <div class="row">
+            <div>
+              <label for="last">First day of your last period</label>
+              <input type="date" id="last" required />
+            </div>
+            <div>
+              <label for="len">Usual cycle length (days)</label>
+              <input type="number" id="len" min="21" max="45" value="28" inputmode="numeric" />
+              <p class="hint">Not sure? 28 is a common average.</p>
+            </div>
+            <div>
+              <label for="per">Period length (days)</label>
+              <input type="number" id="per" min="2" max="8" value="5" inputmode="numeric" />
+            </div>
+          </div>
+          <button class="go" type="submit">Show my skin phase</button>
+          <p class="privacy">🔒 Calculated in your browser. Nothing you enter is saved or sent anywhere.</p>
+          <p class="error" id="err" role="alert" hidden></p>
+        </form>
+
+        <div id="result" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <section class="content">
+      <h2>How your cycle can show up on your skin</h2>
+      <p>Across a typical cycle, estrogen and progesterone rise and fall in a fairly regular wave. Skin responds to that wave — which is why many people notice the same changes at the same point every month. The pattern is different for everyone, but it often looks something like this:</p>
+      <table class="phases-table">
+        <thead><tr><th>Phase</th><th>Typical days*</th><th>What skin often does</th></tr></thead>
+        <tbody>
+          <tr><td><b>Period</b></td><td>1–5</td><td>Can feel drier, duller or more sensitive; last week's spots often start to calm.</td></tr>
+          <tr><td><b>Follicular</b></td><td>6–12</td><td>Rising estrogen — many people see calmer, more even, better-hydrated skin.</td></tr>
+          <tr><td><b>Ovulation</b></td><td>13–15</td><td>Often the "glow" days; oil may start to increase towards the end.</td></tr>
+          <tr><td><b>Early luteal</b></td><td>16–21</td><td>Progesterone rises; more oil and congestion are common.</td></tr>
+          <tr><td><b>Watch week</b></td><td>22–28</td><td>The days when breakouts most often appear — commonly chin and jawline.</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.85rem;color:#777">*For a 28-day cycle. The calculator adjusts these to your own cycle length.</p>
+
+      <h2>Why tracking beats guessing</h2>
+      <p>A calculator can tell you where you probably are in your cycle. It can't tell you how <em>your</em> skin responds — whether your breakouts really cluster in the watch week, which zones flare, or whether sleep, stress or food make it worse. That only shows up when you track your skin next to your cycle for a few weeks.</p>
+      <p>That's what Aperia is for: a quick daily skin scan scored by zone, tracked alongside your cycle, sleep, stress and food, so your own pattern becomes visible.</p>
+
+      <div class="cta">
+        <h3>See your own skin pattern</h3>
+        <p>Daily skin scans + your cycle, in one timeline. Free to start.</p>
+        <a class="btn" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=calculator-page-cta&mt=8">Download on the App Store</a>
+      </div>
+
+      <h2>Questions</h2>
+      <details><summary>Why does my skin break out before my period?</summary><p>In the days before a period, the balance of hormones shifts and many people notice more oil and breakouts, often around the chin and jawline. Not everyone gets them, and the timing differs from person to person — which is why tracking your own pattern is useful.</p></details>
+      <details><summary>Which cycle phase is my skin usually at its best?</summary><p>Many people find their skin looks clearest and most even in the days after their period and around ovulation, when estrogen is higher. Your own pattern may be different.</p></details>
+      <details><summary>How accurate is this calculator?</summary><p>It gives an estimate based on the cycle length you enter, assuming ovulation about 14 days before your next period. Real cycles vary month to month, so treat the dates as a guide, not a prediction. It is not suitable for contraception or fertility planning.</p></details>
+      <details><summary>Does this work if I use hormonal contraception?</summary><p>Most hormonal contraceptives change or pause the natural cycle phases, so the phase estimates here may not apply. Tracking your skin over time can still show you your own patterns.</p></details>
+      <details><summary>Is my data stored?</summary><p>No. Everything is calculated in your browser. Nothing you enter is saved or sent anywhere.</p></details>
+
+      <p class="disclaimer">This calculator gives general, estimated information for self-knowledge. It is not medical advice, doesn't diagnose or treat any condition, and is not a method of contraception or fertility planning. If your cycles are very irregular, or you're worried about your skin, talk to a doctor or dermatologist.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="fw">
+      <span>© <span id="yr"></span> Aperia. A self-knowledge tool, not a medical service.</span>
+      <span>
+        <a href="/journal/">Journal</a>
+        <a href="https://legal.aperiaskin.com/terms-of-use.html">Terms</a>
+        <a href="https://legal.aperiaskin.com/privacy-policy.html">Privacy</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    var DAY = 86400000;
+    var COLORS = { period: 'var(--menstrual)', follicular: 'var(--follicular)', ovulation: 'var(--ovulation)', luteal: 'var(--luteal)', watch: 'var(--watch)' };
+
+    // DRAFT copy — pending dermatologist review. "Often / may" on purpose.
+    var PHASES = {
+      period: {
+        name: 'Period phase',
+        text: 'Hormones are at their lowest. Skin can feel drier, duller or more sensitive, and breakouts from last week often start to calm down.',
+        track: ['Dryness or tightness', 'Sensitivity or redness', 'Which spots are healing', 'Sleep and energy'],
+        care: ['Keep it gentle: mild cleanser, good moisturiser', 'Go easy on strong exfoliants', 'Rest counts — skin notices short nights']
+      },
+      follicular: {
+        name: 'Follicular phase',
+        text: 'Estrogen is rising. For many people this is when skin looks calmer, more even and better hydrated.',
+        track: ['How clear and even skin looks', 'Any new product you try', 'Hydration'],
+        care: ['A good week to introduce a new product (patch-test first)', 'Keep SPF daily', 'Note what "good skin" looks like for you']
+      },
+      ovulation: {
+        name: 'Ovulation window',
+        text: 'Estrogen peaks — often the "glow" days. Some people notice oil starting to increase towards the end of this window.',
+        track: ['Glow vs. oiliness', 'T-zone shine', 'Any first new spots'],
+        care: ['Keep the routine steady', 'Light, non-heavy moisturiser if you get oilier', 'Enjoy the good days — and log them']
+      },
+      luteal: {
+        name: 'Early luteal phase',
+        text: 'Progesterone rises. More oil, slightly congested pores and the first spots are common for people whose skin follows their cycle.',
+        track: ['Oiliness and congestion', 'Where new spots appear', 'Stress and sleep'],
+        care: ['Stay consistent — no panic-buying', 'Gentle cleansing morning and night', 'Notice food and stress, they can add up this week']
+      },
+      watch: {
+        name: 'Watch week (late luteal)',
+        text: 'The days before your period, when breakouts most often appear — commonly around the chin and jawline. Not everyone gets them, and knowing it is coming already helps.',
+        track: ['New spots and their location', 'Sleep, stress and food', 'How long spots last'],
+        care: ["Don't start new products now — it muddies what you learn", 'Hands off: picking makes marks last longer', 'Be kind to yourself — this week is hormonal, not your fault']
+      }
+    };
+
+    function parseLocalDate(v) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+      if (!m) return null;
+      var d = new Date(+m[1], +m[2] - 1, +m[3]);
+      return isNaN(d) ? null : d;
+    }
+    function midnight(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+    function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+    function daysBetween(a, b) { return Math.round((midnight(b) - midnight(a)) / DAY); }
+    function fmt(d) { return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }); }
+
+    // Phase for a cycle day (1-based) given cycle and period length.
+    function phaseFor(day, len, per) {
+      var ov = len - 14;                 // estimated ovulation day
+      var watchStart = len - 6;          // last 7 days of the cycle
+      if (day <= per) return 'period';
+      if (day >= watchStart) return 'watch';
+      if (day >= ov - 1 && day <= ov + 1) return 'ovulation';
+      if (day > ov + 1) return 'luteal';
+      return 'follicular';
+    }
+
+    function el(tag, attrs, html) {
+      var e = document.createElement(tag);
+      if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (html != null) e.innerHTML = html;
+      return e;
+    }
+    function list(items) { return '<ul>' + items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>'; }
+
+    var form = document.getElementById('calc');
+    var err = document.getElementById('err');
+    var out = document.getElementById('result');
+    var lastInput = document.getElementById('last');
+    lastInput.max = (function (t) { return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); })(new Date());
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      err.hidden = true;
+      var last = parseLocalDate(lastInput.value);
+      var len = parseInt(document.getElementById('len').value, 10);
+      var per = parseInt(document.getElementById('per').value, 10);
+      var today = midnight(new Date());
+
+      if (!last) return showError('Please choose the first day of your last period.');
+      if (last > today) return showError("That date is in the future — pick the first day of your most recent period.");
+      if (!(len >= 21 && len <= 45)) return showError('Cycle length should be between 21 and 45 days.');
+      if (!(per >= 2 && per <= 8)) return showError('Period length should be between 2 and 8 days.');
+      if (per >= len - 14) per = Math.max(2, len - 15);
+
+      var elapsed = daysBetween(last, today);
+      var cyclesPassed = Math.floor(elapsed / len);
+      var cycleStart = addDays(last, cyclesPassed * len);
+      var cycleDay = elapsed - cyclesPassed * len + 1;
+      var phaseKey = phaseFor(cycleDay, len, per);
+      var p = PHASES[phaseKey];
+
+      var nextPeriod = addDays(cycleStart, len);
+      var watchStartDay = len - 6;
+      var watchStart = addDays(cycleStart, watchStartDay - 1);
+      if (cycleDay >= watchStartDay) watchStart = addDays(nextPeriod, watchStartDay - 1); // already in it → show the next one
+
+      out.innerHTML = '';
+      var top = el('div', { 'class': 'today' });
+      top.appendChild(el('div', null, '<div class="daynum">Day ' + cycleDay + '</div><div style="color:#777;font-size:.85rem">of a ' + len + '-day cycle</div>'));
+      top.appendChild(el('span', { 'class': 'badge', style: 'background:' + COLORS[phaseKey] + (phaseKey === 'watch' ? ';color:#fff' : '') }, p.name));
+      out.appendChild(top);
+
+      if (cyclesPassed >= 2) {
+        out.appendChild(el('p', { 'class': 'hint', style: 'margin-top:10px' }, 'That date is a few cycles ago, so this is projected forward — the further back, the less precise. Using your most recent period start gives the best estimate.'));
+      }
+
+      out.appendChild(el('p', { 'class': 'phase-title' }, 'What your skin often does now'));
+      out.appendChild(el('p', { 'class': 'phase-text' }, p.text));
+
+      var cols = el('div', { 'class': 'cols' });
+      cols.appendChild(el('div', { 'class': 'box' }, '<h4>Worth tracking this phase</h4>' + list(p.track)));
+      cols.appendChild(el('div', { 'class': 'box' }, '<h4>Gentle ideas</h4>' + list(p.care)));
+      out.appendChild(cols);
+
+      var dates = el('div', { 'class': 'dates' });
+      dates.appendChild(el('div', { 'class': 'date-box' }, '<small>Next watch week starts</small><b>' + fmt(watchStart) + '</b>'));
+      dates.appendChild(el('div', { 'class': 'date-box' }, '<small>Next period (estimate)</small><b>' + fmt(nextPeriod) + '</b>'));
+      out.appendChild(dates);
+
+      // 35-day strip starting today
+      var wrap = el('div', { 'class': 'strip-wrap' }, '<h4 style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--plum)">Your next 5 weeks</h4>');
+      var strip = el('div', { 'class': 'strip', role: 'img', 'aria-label': 'Cycle phases for the next 35 days' });
+      var labels = el('div', { 'class': 'strip-labels', 'aria-hidden': 'true' });
+      for (var i = 0; i < 35; i++) {
+        var d = addDays(today, i);
+        var cd = ((elapsed + i) % len) + 1;
+        var k = phaseFor(cd, len, per);
+        var cell = el('div', { title: fmt(d) + ' · ' + PHASES[k].name, style: 'background:' + COLORS[k] });
+        if (i === 0) cell.className = 'today-cell';
+        strip.appendChild(cell);
+        labels.appendChild(el('span', null, (i === 0 ? 'Today' : (i % 7 === 0 ? d.getDate() + '.' + (d.getMonth() + 1) + '.' : ''))));
+      }
+      wrap.appendChild(strip);
+      wrap.appendChild(labels);
+      wrap.appendChild(el('div', { 'class': 'legend' },
+        '<span><i style="background:var(--menstrual)"></i>Period</span>' +
+        '<span><i style="background:var(--follicular)"></i>Follicular</span>' +
+        '<span><i style="background:var(--ovulation)"></i>Ovulation</span>' +
+        '<span><i style="background:var(--luteal)"></i>Early luteal</span>' +
+        '<span><i style="background:var(--watch)"></i>Watch week</span>'));
+      out.appendChild(wrap);
+
+      out.appendChild(el('div', { 'class': 'cta' },
+        '<h3>Does your skin really follow this?</h3>' +
+        '<p>Scan your skin daily in Aperia and see your own pattern next to your cycle. Free to start.</p>' +
+        '<a class="btn" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=calculator-result&mt=8">Track it daily in Aperia</a>'));
+
+      out.hidden = false;
+      out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function showError(msg) {
+      err.textContent = msg;
+      err.hidden = false;
+      out.hidden = true;
+    }
+
+    // Exposed for automated checks only (no data leaves the page).
+    window.__aperiaPhaseFor = phaseFor;
+  })();
+  </script>
+</body>
+</html>
