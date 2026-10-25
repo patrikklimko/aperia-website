@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--
+  APERIA GUIDE TEMPLATE — copy to guides/<slug>.html and replace every placeholder.
+  Rules:
+  - Wording: "often / may / many people"; never diagnose, cure, treat, "clear skin" promises, or name diseases.
+  - Sources: only real, verifiable sources (PubMed/DOI, journals, NHS, AAD, Cleveland Clinic, etc.). Never invent references.
+  - Medical review: keep the REVIEW block commented out until the dermatologist has actually reviewed the page.
+  - CTA: App Store link ct=g-<slug> (max 40 chars). Calculator link: /cycle-skin-calculator.
+  - Internal links use clean URLs (/journal/<slug>, /guides/<slug>), no .html.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-itunes-app" content="app-id=6781202703" />
+  <title>How to Find Out What's Causing Your Breakouts: A 4-Week Skin Log — Aperia</title>
+  <meta name="description" content="How to find out what is causing my acne? Try a 4-week skin log: track cycle day, sleep, stress, food and products, then read the delayed patterns over 3 months." />
+  <link rel="canonical" href="https://aperiaskin.com/guides/what-is-causing-my-breakouts" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to find out what's causing your breakouts: a 4-week skin log" />
+  <meta property="og:description" content="A simple daily log of cycle day, sleep, stress, food, products and photos, plus how to read delayed reactions and know when a pattern is real." />
+  <meta property="og:url" content="https://aperiaskin.com/guides/what-is-causing-my-breakouts" />
+  <meta property="og:image" content="https://aperiaskin.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="/assets/aperia-logo.png" />
+  <link rel="preload" href="/assets/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Article","headline":"How to find out what's causing your acne breakouts: a 4-week skin log","description":"How to find out what is causing my acne? Try a 4-week skin log: track cycle day, sleep, stress, food and products, then read the delayed patterns over 3 months.","datePublished":"2026-10-25","dateModified":"2026-10-25",
+     "author":{"@type":"Organization","name":"Aperia","url":"https://aperiaskin.com/about"},
+     "publisher":{"@type":"Organization","name":"Aperia","logo":{"@type":"ImageObject","url":"https://aperiaskin.com/assets/aperia-logo.png"}},
+     "mainEntityOfPage":"https://aperiaskin.com/guides/what-is-causing-my-breakouts","inLanguage":"en"},
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://aperiaskin.com/"},
+      {"@type":"ListItem","position":2,"name":"Guides","item":"https://aperiaskin.com/guides/"},
+      {"@type":"ListItem","position":3,"name":"What's causing my breakouts?","item":"https://aperiaskin.com/guides/what-is-causing-my-breakouts"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How do I know what is causing my acne?","acceptedAnswer":{"@type":"Answer","text":"Most people can't tell from memory, because breakouts often show up days or weeks after the trigger. A short daily log works better: cycle day, sleep, stress, notable foods, product changes, a same-light photo and where new spots appear. After one full cycle, and ideally three, look for what repeats before your worse days."}},
+      {"@type":"Question","name":"How long does it take to find a breakout trigger?","acceptedAnswer":{"@type":"Answer","text":"Give it at least one full cycle, about four weeks, to get a baseline. Many patterns only become trustworthy after two or three cycles, because one bad week can be a coincidence. Product reactions can be slower still: the American Academy of Dermatology notes that blemishes from makeup can take anywhere from a few days to 6 months to appear."}},
+      {"@type":"Question","name":"Why is my skin bad all of a sudden?","acceptedAnswer":{"@type":"Answer","text":"A sudden change often lines up with something that shifted a few days to a few weeks earlier: a new product, a stressful stretch, short nights, a change in routine, or the week before your period. Look back over your log, not just the last 24 hours. If the change is sudden and severe, painful or spreading, see a doctor or dermatologist."}},
+      {"@type":"Question","name":"Why is my skin bad when I eat healthy?","acceptedAnswer":{"@type":"Answer","text":"Food is only one of several things linked to breakouts, and the evidence on diet is mixed. Hormones across your cycle, stress, sleep, products and friction can all play a part, so a healthy diet doesn't rule the others out. A log that tracks all of them side by side shows which ones actually line up with your skin."}},
+      {"@type":"Question","name":"Do I need a skin journal app, or will a notebook work?","acceptedAnswer":{"@type":"Answer","text":"A notebook works if you're consistent. The hard part is comparing photos and spotting delayed patterns across weeks, which is where an app helps. Aperia pairs a daily face scan with your cycle, sleep, stress, food and product logs, and points out patterns that repeat. Either way, the method matters more than the tool."}}
+    ]}
+  ]}
+  </script>
+  <style>
+    @font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/fraunces-var.woff2) format('woff2')}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/assets/fonts/inter-var.woff2) format('woff2')}
+    :root{--cream:#FAF7F2;--paper:#fffdf9;--green:#2D5F3F;--plum:#5B3A52;--soft-green:#E6EFE8;--ink:#1A1A1A;--grey:#666;--line:rgba(26,26,26,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:var(--green)}
+    .wrap{max-width:740px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;background:rgba(250,247,242,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}
+    .nav{max-width:1040px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand img{width:32px;height:32px;object-fit:contain}
+    .brand b{font-family:'Fraunces',serif;color:var(--green);font-size:1.2rem;font-weight:600}
+    .navlinks a{font-weight:600;font-size:.9rem;margin-left:16px;text-decoration:none}
+    .crumbs{font-size:.8rem;color:#888;padding-top:22px}
+    .crumbs a{color:#888;text-decoration:none}
+    .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--plum);margin-top:18px}
+    h1{text-wrap:balance;font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.08;letter-spacing:-.02em;margin:10px 0 12px}
+    .standfirst{font-size:clamp(1.02rem,2.8vw,1.15rem);color:#3a3a3a}
+    .meta{font-size:.82rem;color:#888;margin:14px 0 24px}
+    .answer{background:var(--soft-green);border-radius:18px;padding:18px 20px;margin:0 0 26px}
+    .answer h2{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+    .answer p{margin:0;font-size:1.04rem;color:#1f3a2a}
+    .toc{border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:0 0 28px;background:var(--paper)}
+    .toc b{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--plum)}
+    .toc ol{margin:6px 0 0 18px}
+    .toc li{margin:3px 0;font-size:.95rem}
+    article h2{text-wrap:balance;font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.35rem,4.4vw,1.65rem);line-height:1.2;margin:36px 0 12px}
+    article h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.18rem;margin:24px 0 8px}
+    article p{margin:0 0 16px;font-size:1.06rem;color:#2a2a2a}
+    article ul,article ol{margin:0 0 18px 22px}
+    article li{margin:6px 0;font-size:1.04rem}
+    .callout{background:var(--paper);border-left:4px solid var(--plum);border-radius:0 14px 14px 0;padding:14px 18px;margin:22px 0}
+    .callout p{margin:0;font-family:'Fraunces',serif;font-size:1.15rem;color:var(--plum);line-height:1.4}
+    .calc-card{display:flex;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:16px 18px;margin:26px 0;text-decoration:none;color:var(--ink);box-shadow:0 18px 40px -32px rgba(38,75,52,.5)}
+    .calc-card svg{flex-shrink:0}
+    .calc-card b{font-family:'Fraunces',serif;font-weight:500;font-size:1.12rem;display:block}
+    .calc-card span{font-size:.92rem;color:#555}
+    .calc-card em{font-style:normal;color:var(--green);font-weight:600}
+    .takeaways{background:var(--soft-green);border-radius:18px;padding:18px 22px;margin:30px 0}
+    .takeaways h2{margin-top:0!important}
+    details{border-bottom:1px solid var(--line);padding:13px 0}
+    summary{font-family:'Fraunces',serif;font-size:1.08rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";font-family:'Inter',sans-serif;color:var(--green);font-size:1.25rem}
+    details[open] summary::after{content:"–"}
+    details p{margin-top:8px!important}
+    .cta{background:radial-gradient(120% 140% at 0% 0%,#3b7752 0%,var(--green) 55%,#1f4630 100%);border-radius:22px;padding:28px 22px;text-align:center;margin:36px 0}
+    .cta h2{color:#F3F0E9!important;margin:0 0 6px!important}
+    .cta p{color:#c8dccc!important}
+    .btn{display:inline-flex;align-items:center;justify-content:center;background:#F3F0E9;color:var(--green);font-weight:600;border-radius:999px;padding:13px 26px;min-height:48px;text-decoration:none;margin-top:6px}
+    .related{border-top:1px solid var(--line);padding-top:8px}
+    .related ul{list-style:none;margin:8px 0 0}
+    .related li a{font-weight:600;text-decoration:none}
+    .sources ol{font-size:.86rem;color:#555;margin-left:20px}
+    .sources li{margin:6px 0;font-size:.86rem;word-break:break-word}
+    .review{font-size:.85rem;color:#555;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:0 0 22px}
+    .disclaimer{font-size:.8rem!important;color:#8a8a8a!important;border-top:1px solid var(--line);margin-top:30px;padding-top:16px}
+    footer{border-top:1px solid var(--line);padding:26px 0 calc(26px + env(safe-area-inset-bottom));color:var(--grey);font-size:.84rem;margin-top:40px}
+    footer .fw{max-width:1040px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    footer a{margin-right:16px}
+    @media(max-width:640px){
+      .wrap{padding:0 16px}.nav{padding:10px 16px}.navlinks a{margin-left:12px;font-size:.85rem}
+      article p,article li{font-size:1rem}
+      .cta .btn{width:100%}
+      footer .fw{flex-direction:column;align-items:center;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="/"><img src="/assets/aperia-logo-96.webp" width="32" height="32" alt="Aperia" /><b>Aperia</b></a>
+      <span class="navlinks"><a href="/guides/">Guides</a><a href="/cycle-skin-calculator">Calculator</a></span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/guides/">Guides</a> › What's causing my breakouts?</nav>
+    <article>
+      <p class="eyebrow">Skin log method</p>
+      <h1>How to find out what's causing your acne breakouts: a 4-week skin log</h1>
+      <p class="standfirst">If you've typed "how to find out what is causing my acne" into a search bar at midnight, you're in good company. The honest answer is that most people can't spot their triggers from memory. A simple daily log, kept for one cycle and then three, usually can.</p>
+      <p class="meta">Updated October 2026 · 9 min read · Aperia Guides</p>
+
+      <!-- REVIEW (enable only after the dermatologist has reviewed this page):
+      <p class="review">Medically reviewed by <a href="/medical-review">REVIEWER NAME, TITLE</a> · REVIEW DATE</p>
+      -->
+
+      <section class="answer"><h2>Quick answer</h2><p>Keep a short daily log for one full cycle (about four weeks), then repeat for three months. Each day, note your cycle day, sleep, stress (1–5), notable foods, product changes, where new spots appear, and take a photo in the same light. Look for what repeats one to three days, or longer, before your worse days.</p></section>
+
+      <nav class="toc" aria-label="On this page"><b>On this page</b><ol>
+        <li><a href="#why-hard">Why your breakout trigger is so hard to spot</a></li>
+        <li><a href="#suspects">The usual suspects (and what the research says)</a></li>
+        <li><a href="#the-log">How to find out what is causing my acne: the 4-week log</a></li>
+        <li><a href="#checklist">Your daily skin log checklist</a></li>
+        <li><a href="#delays">How to read delayed reactions</a></li>
+        <li><a href="#one-change">The one-change-at-a-time rule</a></li>
+        <li><a href="#three-months">Months 2 and 3: when to trust a pattern</a></li>
+        <li><a href="#doctor">When to see a dermatologist</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ol></nav>
+
+      <h2 id="why-hard">Why your breakout trigger is so hard to spot</h2>
+      <p>Breakouts rarely show up the morning after the thing that set them off. A spot you notice on Thursday may trace back to a short night on Monday, a stressful week, a new moisturizer from last month, or simply where you are in your cycle. Memory is bad at joining those dots. It tends to blame whatever happened last, like the pizza you ate yesterday.</p>
+      <p>Most of the time, there's also more than one thing going on. Many people find their skin responds to a mix: a hormonal baseline that rises and falls across the month, with sleep, stress and products nudging it up or down. That's why "why is my skin bad no matter what I do?" is such a common feeling. If you change one thing while three others shift in the background, it can look like nothing works.</p>
+      <p>A log fixes that: a few notes at the same time every day, so that weeks later you can see what actually lines up.</p>
+
+      <h2 id="suspects">The usual suspects (and what the research says)</h2>
+      <p>These are the factors with the most research behind them. None applies to everyone, which is why your own log matters.</p>
+
+      <h3>Your menstrual cycle</h3>
+      <p>In a survey of adult women at a dermatology practice, 65% said their breakouts got worse around their period. Of those, more than half (56%) noticed it in the week before bleeding started [1]. If your spots cluster around the same days each month, cycle day is the first thing to log. Our guide to <a href="/journal/is-your-skin-hormonal">telling whether your breakouts are hormonal</a> goes deeper.</p>
+
+      <h3>Stress</h3>
+      <p>A small study of university students compared their skin during exam periods with calmer weeks. Higher perceived stress went along with worse breakouts, even after the researchers accounted for changes in sleep and diet [2]. It was only 22 people, so take it as a clue rather than proof, but it matches what many people notice.</p>
+
+      <h3>Sleep</h3>
+      <p>In a study of 40 adults, worse self-reported sleep quality was linked with more severe breakouts as graded by researchers [3]. The authors called it a "potential relationship", and the science here is still unclear. Still, sleep is easy to log, and short nights are one of the most common patterns people spot in their own data.</p>
+
+      <h3>Food: high glycemic load and dairy</h3>
+      <p>This is where the evidence is genuinely mixed, so be wary of anyone who is certain. The American Academy of Dermatology (AAD) says small studies suggest a low-glycemic diet (fewer foods that spike blood sugar, like white bread, fries and sugary drinks) may reduce breakouts, but other studies found no link, and more research is needed [4].</p>
+      <p>Dairy is similar. A large review of 14 observational studies, covering 78,529 people aged 7 to 30, found that any dairy intake was linked with somewhat higher odds of breakouts. The authors warned the results should be read with caution because the studies varied a lot and showed signs of bias [5]. The AAD points mainly to cow's milk and says it hasn't found studies showing yogurt or cheese lead to more breakouts [4]. So dairy may matter for some people and not others. The AAD's own advice is to notice whether a food seems to trigger breakouts, and what happens when you skip it for a day, a week or a month [4]. That's a log. See <a href="/journal/food-stress-and-breakouts">dairy, sugar and stress</a> for more.</p>
+
+      <h3>Makeup, skincare and hair products</h3>
+      <p>Some cosmetics can clog pores and cause small bumps, often on the cheeks, chin or forehead. Breakouts around your lips can point to lipstick or lip balm. The AAD says these blemishes can take anywhere from a few days to 6 months to appear, which is exactly why the link is so easy to miss [6].</p>
+
+      <h3>Friction and trapped heat</h3>
+      <p>Anything that rubs against warm, sweaty skin can irritate it and set off new spots. The AAD lists helmets, chin straps, backpack straps and tight synthetic clothing as common examples, with breakouts showing up wherever the rubbing happens [7]. Location is your biggest clue here.</p>
+      <p>For a wider look at how these pieces fit together, read <a href="/journal/what-actually-drives-your-skin">what actually drives your skin</a>.</p>
+
+      <h2 id="the-log">How to find out what is causing my acne: the 4-week log</h2>
+      <p>Start on day 1 of your period if you can. That way your first four weeks cover one full cycle, and every later month lines up neatly against the first. If you don't have regular periods, just start today and note what you can.</p>
+      <p>Pick a fixed time, ideally every morning before skincare, and spend two minutes on it. A log you keep for 90 days beats a beautiful one you drop after a week.</p>
+      <p>For the first month, <strong>don't change anything on purpose</strong>. You're building a baseline: what your skin normally does across a cycle. Without it, you can't tell whether a later change helped or you just hit a calmer week.</p>
+
+      <a class="calc-card" href="/cycle-skin-calculator">
+        <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true"><circle cx="27" cy="27" r="20" fill="none" stroke="#D79A96" stroke-width="7" pathLength="100" stroke-dasharray="18 82"/><circle cx="27" cy="27" r="20" fill="none" stroke="#8FB79A" stroke-width="7" pathLength="100" stroke-dasharray="25 75" stroke-dashoffset="-19"/><circle cx="27" cy="27" r="20" fill="none" stroke="#E6C468" stroke-width="7" pathLength="100" stroke-dasharray="10 90" stroke-dashoffset="-45"/><circle cx="27" cy="27" r="20" fill="none" stroke="#BBA6CB" stroke-width="7" pathLength="100" stroke-dasharray="21 79" stroke-dashoffset="-56"/><circle cx="27" cy="27" r="20" fill="none" stroke="#7D5A8C" stroke-width="7" pathLength="100" stroke-dasharray="22 78" stroke-dashoffset="-78"/></svg>
+        <div><b>What cycle day is it today?</b><span>Find your phase and cycle day so your log starts on the right foot. <em>Try the free cycle skin calculator →</em></span></div>
+      </a>
+
+      <h2 id="checklist">Your daily skin log checklist</h2>
+      <p>Copy this into a notes app or print it out. Seven lines, once a day:</p>
+      <ul>
+        <li><strong>Cycle day.</strong> Day 1 is the first day of full bleeding. Note spotting or a missed period too.</li>
+        <li><strong>Sleep.</strong> Roughly how many hours, and whether it felt good or broken.</li>
+        <li><strong>Stress, 1 to 5.</strong> 1 is calm, 5 is overwhelmed. Add a word if something big happened.</li>
+        <li><strong>Notable foods.</strong> Not everything. Just anything outside your usual: lots of sugar, a big dairy day, takeout, alcohol.</li>
+        <li><strong>Products and changes.</strong> Anything new or different: a new serum, a different sunscreen, skipped cleansing, a new pillowcase, a helmet or mask, a hair product.</li>
+        <li><strong>Photo.</strong> Same spot, same light, same time, bare face. Morning by a window works well. Front plus both sides if you can.</li>
+        <li><strong>Where spots appear.</strong> Forehead, cheeks, chin, jawline, hairline, around the lips. Count new ones, roughly.</li>
+      </ul>
+      <p>If paper feels like a chore, this is the kind of log Aperia was built for. You take a daily face scan, tap in sleep, stress, food and products, and it lines everything up against your cycle, then points out patterns that repeat, such as "short sleep, worse skin the next day." Here's <a href="/journal/how-aperia-reads-your-skin">how Aperia reads your skin</a>. A notebook works too; the method is what counts.</p>
+
+      <div class="callout"><p>Write it down at the same time every day. Your memory will blame yesterday. Your log won't.</p></div>
+
+      <h2 id="delays">How to read delayed reactions</h2>
+      <p>At the end of four weeks, sit down with your log and look at your worst days. Then look <em>backwards</em> from each one, not just at that day. Different suspects tend to show up on different timelines:</p>
+      <ul>
+        <li><strong>Check the same day and the 1 to 3 days before.</strong> This is where to look for short-lag patterns like a bad night, a very stressful day or an unusual meal. If two or three of your flare-ups follow a short night by a day or two, that's worth noting.</li>
+        <li><strong>Check the week before.</strong> Did a stressful stretch, a run of poor sleep, or a new habit start about a week earlier?</li>
+        <li><strong>Check your cycle day.</strong> Do your worse days cluster in the same part of your cycle? For many people, that's the week before bleeding [1].</li>
+        <li><strong>Check the weeks and months before.</strong> Product reactions can be slow. Since blemishes from cosmetics can take from a few days to 6 months to appear [6], a product you started six weeks ago is still a fair suspect.</li>
+        <li><strong>Check the location.</strong> Spots along a strap line, under a helmet, at the hairline or around the lips point to something touching that area [6][7].</li>
+      </ul>
+      <p>Notice what isn't there, too. If you're sure chocolate breaks you out but your log shows three chocolate days followed by calm skin, that's useful.</p>
+
+      <h2 id="one-change">The one-change-at-a-time rule</h2>
+      <p>Once your first cycle is logged, you may have a suspect or two. Now you can test one. The rule is simple: <strong>change one thing at a time, and give it time</strong>.</p>
+      <p>If you swap your moisturizer, cut back on milk and go to bed earlier in the same week, and your skin improves, you won't know which one helped, or what to undo if it gets worse. Pick the suspect your log points to most clearly, change only that, and keep logging everything else.</p>
+      <p>Give each change at least one full cycle, so you compare the same week of your cycle this month with last month. For products, that few-days-to-6-months window [6] is a reason to be patient both ways: before calling a product safe, and before deciding a switch didn't help.</p>
+
+      <h2 id="three-months">Months 2 and 3: when to trust a pattern</h2>
+      <p>One month is a snapshot. A pattern you see once might be real, or it might be a coincidence. What makes it trustworthy is repetition:</p>
+      <ul>
+        <li><strong>It shows up in at least two or three cycles,</strong> at roughly the same point or after the same trigger.</li>
+        <li><strong>It has a sensible delay</strong> that stays about the same each time.</li>
+        <li><strong>It changes when you change the suspect.</strong> If you remove it and your usual flare-ups soften, then return it and they come back, that's about as clear as a home log gets.</li>
+        <li><strong>It isn't explained by your cycle alone.</strong> If your "dairy breakouts" always land in the week before your period, cycle timing may be the real link.</li>
+      </ul>
+      <p>After three months, many people find one or two factors that clearly matter, and a few they can stop worrying about. That alone makes skin feel less random.</p>
+
+      <h2 id="doctor">When to see a dermatologist</h2>
+      <p>A skin log is a self-knowledge tool. It is not a substitute for professional care. Please see a doctor or dermatologist, and don't wait out a three-month log first, if:</p>
+      <ul>
+        <li>your breakouts are deep, painful or feel like hard lumps under the skin</li>
+        <li>spots are leaving scars or dark marks that don't fade</li>
+        <li>your skin changed suddenly and severely, or is spreading quickly</li>
+        <li>breakouts have lasted for months despite your best efforts</li>
+        <li>they come with other changes, like very irregular periods or new hair growth</li>
+        <li>your skin is affecting your mood, confidence or daily life</li>
+      </ul>
+      <p>If you do book an appointment, bring your log. Weeks of photos, cycle days and product notes give a dermatologist far more to work with than "it's been bad lately."</p>
+
+      <section class="takeaways"><h2>Key takeaways</h2><ul>
+        <li>Most people can't find their breakout trigger from memory, because reactions are often delayed by days or even months.</li>
+        <li>Log seven things daily for one cycle: cycle day, sleep, stress, notable foods, product changes, a same-light photo and where spots appear.</li>
+        <li>Spend the first month changing nothing, so you have a baseline to compare against.</li>
+        <li>Look backwards from your worst days: 1 to 3 days, a week, your cycle day and the weeks before.</li>
+        <li>Test one change at a time, for at least a full cycle, and trust patterns that repeat across two or three cycles.</li>
+        <li>See a dermatologist for painful, scarring, sudden severe or persistent breakouts, and bring your log.</li>
+      </ul></section>
+
+      <h2 id="faq">Questions</h2>
+      <details><summary>How do I know what is causing my acne?</summary><p>Most people can't tell from memory, because breakouts often show up days or weeks after the trigger. A short daily log works better: cycle day, sleep, stress, notable foods, product changes, a same-light photo and where new spots appear. After one full cycle, and ideally three, look for what repeats before your worse days.</p></details>
+      <details><summary>How long does it take to find a breakout trigger?</summary><p>Give it at least one full cycle, about four weeks, to get a baseline. Many patterns only become trustworthy after two or three cycles, because one bad week can be a coincidence. Product reactions can be slower still: the American Academy of Dermatology notes that blemishes from makeup can take anywhere from a few days to 6 months to appear.</p></details>
+      <details><summary>Why is my skin bad all of a sudden?</summary><p>A sudden change often lines up with something that shifted a few days to a few weeks earlier: a new product, a stressful stretch, short nights, a change in routine, or the week before your period. Look back over your log, not just the last 24 hours. If the change is sudden and severe, painful or spreading, see a doctor or dermatologist.</p></details>
+      <details><summary>Why is my skin bad when I eat healthy?</summary><p>Food is only one of several things linked to breakouts, and the evidence on diet is mixed. Hormones across your cycle, stress, sleep, products and friction can all play a part, so a healthy diet doesn't rule the others out. A log that tracks all of them side by side shows which ones actually line up with your skin.</p></details>
+      <details><summary>Do I need a skin journal app, or will a notebook work?</summary><p>A notebook works if you're consistent. The hard part is comparing photos and spotting delayed patterns across weeks, which is where an app helps. Aperia pairs a daily face scan with your cycle, sleep, stress, food and product logs, and points out patterns that repeat. Either way, the method matters more than the tool.</p></details>
+
+      <section class="cta">
+        <h2>Let your log find the pattern</h2>
+        <p>Aperia lines up a daily face scan with your cycle, sleep, stress, food and products, and shows you what repeats. Free to start.</p>
+        <a class="btn" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=g-what-is-causing-my-breakouts&mt=8">Download on the App Store</a>
+      </section>
+
+      <section class="related"><h2>Keep reading</h2><ul>
+        <li><a href="/guides/why-skin-looks-better-on-your-period">Why your skin looks better on your period →</a></li>
+        <li><a href="/guides/breakouts-during-ovulation">Breakouts during ovulation →</a></li>
+        <li><a href="/guides/breakouts-after-your-period">Breaking out after your period →</a></li>
+        <li><a href="/guides/is-my-skincare-breaking-me-out">Is my skincare breaking me out? →</a></li>
+        <li><a href="/cycle-skin-calculator">Cycle skin calculator: which phase are you in? →</a></li>
+        <li><a href="/journal/what-actually-drives-your-skin">What actually drives your skin →</a></li>
+        <li><a href="/journal/is-your-skin-hormonal">How to tell if your breakouts are hormonal →</a></li>
+        <li><a href="/journal/food-stress-and-breakouts">Do dairy, sugar and stress cause breakouts? →</a></li>
+        <li><a href="/journal/how-aperia-reads-your-skin">How Aperia reads your skin →</a></li>
+      </ul></section>
+
+      <section class="sources"><h2>Sources</h2><ol>
+        <li>Geller L, Rosen J, Frankel A, Goldenberg G. Perimenstrual flare of adult acne. <em>Journal of Clinical and Aesthetic Dermatology</em>. 2014;7(8):30–34. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4142818/">PMC4142818</a></li>
+        <li>Chiu A, Chon SY, Kimball AB. The response of skin disease to stress: changes in the severity of acne vulgaris as affected by examination stress. <em>Archives of Dermatology</em>. 2003;139(7):897–900. <a href="https://pubmed.ncbi.nlm.nih.gov/12873885/">PubMed 12873885</a></li>
+        <li>Schrom KP, Ahsanuddin S, Baechtold M, Tripathi R, Ramser A, Baron E. Acne severity and sleep quality in adults. <em>Clocks &amp; Sleep</em>. 2019;1(4):510–516. <a href="https://doi.org/10.3390/clockssleep1040039">doi:10.3390/clockssleep1040039</a></li>
+        <li>American Academy of Dermatology. Can the right diet get rid of acne? AAD public education. Accessed October 2026. <a href="https://www.aad.org/public/diseases/acne/causes/diet">aad.org</a></li>
+        <li>Juhl CR, Bergholdt HKM, Miller IM, Jemec GBE, Kanters JK, Ellervik C. Dairy intake and acne vulgaris: a systematic review and meta-analysis of 78,529 children, adolescents, and young adults. <em>Nutrients</em>. 2018;10(8):1049. <a href="https://doi.org/10.3390/nu10081049">doi:10.3390/nu10081049</a></li>
+        <li>American Academy of Dermatology. I have acne! Is it okay to wear makeup? AAD public education. Accessed October 2026. <a href="https://www.aad.org/public/diseases/acne/causes/makeup">aad.org</a></li>
+        <li>American Academy of Dermatology. Is sports equipment causing your acne? AAD public education. Accessed October 2026. <a href="https://www.aad.org/public/diseases/acne/causes/sports-equipment">aad.org</a></li>
+      </ol></section>
+
+      <p class="disclaimer">Aperia is a self-knowledge tool, not a medical service. This guide is general information, not medical advice. If you're worried about your skin, or your breakouts are painful, scarring or getting worse, talk to a doctor or dermatologist.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="fw">
+      <span>© <span id="yr"></span> Aperia. A self-knowledge tool, not a medical service.</span>
+      <span><a href="/guides/">Guides</a><a href="/journal/">Journal</a><a href="https://legal.aperiaskin.com/privacy-policy.html">Privacy</a></span>
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
