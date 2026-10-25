@@ -71,6 +71,14 @@
     .error{color:#a3352f;font-size:.9rem;margin-top:12px}
     #result{margin-top:22px}
     .today{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .ring-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+    .ring{width:230px;height:230px;flex-shrink:0;margin:0 auto}
+    .ring .seg{opacity:0;animation:segIn .5s ease forwards}
+    .ring .marker{opacity:0;animation:segIn .4s ease .55s forwards}
+    @keyframes segIn{to{opacity:1}}
+    @media(prefers-reduced-motion:reduce){.ring .seg,.ring .marker{animation:none;opacity:1}}
+    .ring-side{flex:1;min-width:220px}
+    @media(max-width:640px){.ring-side{text-align:center}}
     .badge{display:inline-block;border-radius:999px;padding:6px 14px;font-weight:600;font-size:.9rem;color:#1a1a1a}
     .daynum{font-family:'Fraunces',serif;font-size:2.2rem;line-height:1}
     .phase-title{font-family:'Fraunces',serif;font-size:1.6rem;margin:16px 0 6px}
@@ -270,6 +278,39 @@
     }
     function list(items) { return '<ul>' + items.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>'; }
 
+    // ── Cycle ring (SVG) ────────────────────────────────────────────────
+    var SHORT = { period: 'Period', follicular: 'Follicular', ovulation: 'Ovulation', luteal: 'Luteal', watch: 'Watch week' };
+    function polar(cx, cy, r, deg) {
+      var a = (deg - 90) * Math.PI / 180;
+      return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+    }
+    function arc(cx, cy, r, a0, a1) {
+      var p0 = polar(cx, cy, r, a0), p1 = polar(cx, cy, r, a1);
+      var large = (a1 - a0) > 180 ? 1 : 0;
+      return 'M' + p0[0].toFixed(2) + ' ' + p0[1].toFixed(2) + ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + p1[0].toFixed(2) + ' ' + p1[1].toFixed(2);
+    }
+    function ringSvg(cycleDay, len, per, phaseKey) {
+      var cx = 115, cy = 115, r = 88, w = 20, gap = 1.6, per1 = 360 / len;
+      var segs = [], start = 1, cur = phaseFor(1, len, per);
+      for (var d = 2; d <= len + 1; d++) {
+        var k = d <= len ? phaseFor(d, len, per) : null;
+        if (k !== cur) { segs.push({ key: cur, from: start, to: d - 1 }); start = d; cur = k; }
+      }
+      var out = '<svg class="ring" viewBox="0 0 230 230" role="img" aria-label="Cycle ring: day ' + cycleDay + ' of ' + len + ', ' + PHASES[phaseKey].name + '">';
+      out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="rgba(26,26,26,.05)" stroke-width="' + w + '"/>';
+      segs.forEach(function (sg, i) {
+        var a0 = (sg.from - 1) * per1 + gap / 2, a1 = sg.to * per1 - gap / 2;
+        out += '<path class="seg" style="animation-delay:' + (i * 0.08) + 's" d="' + arc(cx, cy, r, a0, a1) + '" fill="none" stroke="' + COLORS[sg.key] + '" stroke-width="' + w + '" stroke-linecap="butt"/>';
+      });
+      var m = polar(cx, cy, r, (cycleDay - 0.5) * per1);
+      out += '<g class="marker"><circle cx="' + m[0].toFixed(2) + '" cy="' + m[1].toFixed(2) + '" r="12" fill="#fff" stroke="#1A1A1A" stroke-width="3"/>' +
+             '<circle cx="' + m[0].toFixed(2) + '" cy="' + m[1].toFixed(2) + '" r="4.5" fill="#1A1A1A"/></g>';
+      out += '<text x="115" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#5B3A52">' + SHORT[phaseKey].toUpperCase() + '</text>';
+      out += '<text x="115" y="132" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="38" fill="#1A1A1A">Day ' + cycleDay + '</text>';
+      out += '<text x="115" y="154" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" fill="#777">of a ' + len + '-day cycle</text>';
+      return out + '</svg>';
+    }
+
     var form = document.getElementById('calc');
     var err = document.getElementById('err');
     var out = document.getElementById('result');
@@ -303,9 +344,13 @@
       if (cycleDay >= watchStartDay) watchStart = addDays(nextPeriod, watchStartDay - 1); // already in it → show the next one
 
       out.innerHTML = '';
-      var top = el('div', { 'class': 'today' });
-      top.appendChild(el('div', null, '<div class="daynum">Day ' + cycleDay + '</div><div style="color:#777;font-size:.85rem">of a ' + len + '-day cycle</div>'));
-      top.appendChild(el('span', { 'class': 'badge', style: 'background:' + COLORS[phaseKey] + (phaseKey === 'watch' ? ';color:#fff' : '') }, p.name));
+      var top = el('div', { 'class': 'ring-row' });
+      top.appendChild(el('div', null, ringSvg(cycleDay, len, per, phaseKey)));
+      top.appendChild(el('div', { 'class': 'ring-side' },
+        '<span class="badge" style="background:' + COLORS[phaseKey] + (phaseKey === 'watch' ? ';color:#fff' : '') + '">' + p.name + '</span>' +
+        '<p class="phase-text" style="margin-top:12px">Day ' + cycleDay + ' of a ' + len + '-day cycle. ' +
+        (phaseKey === 'watch' ? 'Your period is estimated in ' + (len - cycleDay + 1) + (len - cycleDay + 1 === 1 ? ' day.' : ' days.')
+          : 'Next watch week in ' + daysBetween(today, watchStart) + ' days.') + '</p>'));
       out.appendChild(top);
 
       if (cyclesPassed >= 2) {
