@@ -49,12 +49,37 @@
     footer .fw{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     footer a{margin-right:16px}
   </style>
+  <link rel="stylesheet" href="/assets/site-header.css" />
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="/"><img src="../assets/aperia-logo.png" alt="Aperia" /><b>Aperia</b></a>
-      <a class="back" href="/#journal">← Journal</a>
+  <header class="sh">
+    <div class="sh-in">
+      <a class="sh-brand" href="/" aria-label="Aperia home">
+        <span class="sh-mark"><img src="/assets/aperia-logo-96.webp" width="42" height="42" alt="Aperia" /></span>
+        <span class="sh-name">Aperia</span>
+      </a>
+      <nav class="sh-links" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#features">Features</a>
+        <a href="/#science">Science</a>
+        <a href="/journal/" aria-current="page">Journal</a>
+        <a href="/cycle-skin-calculator">Calculator</a>
+        <a href="https://legal.aperiaskin.com/support.html">Support</a>
+        <a class="sh-cta" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=j-why-breakouts-follow-your-cycle-nav&mt=8">Get the app</a>
+      </nav>
+      <button class="sh-menu" type="button" aria-label="Menu" aria-controls="sh-mm" aria-expanded="false" onclick="var m=document.getElementById('sh-mm');this.setAttribute('aria-expanded',m.classList.toggle('open'))">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <div class="sh-mm" id="sh-mm">
+      <a href="/#how">How it works</a>
+      <a href="/#features">Features</a>
+      <a href="/#science">Science</a>
+      <a href="/#stories">Stories</a>
+      <a href="/journal/">Journal &amp; guides</a>
+      <a href="/cycle-skin-calculator">Cycle skin calculator</a>
+      <a href="https://legal.aperiaskin.com/support.html">Support</a>
+      <a class="sh-mm-cta" data-appstore href="https://apps.apple.com/app/apple-store/id6781202703?pt=129049378&ct=j-why-breakouts-follow-your-cycle-nav&mt=8">Get the app</a>
     </div>
   </header>
 
