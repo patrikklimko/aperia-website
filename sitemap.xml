@@ -8,7 +8,7 @@
 
   <url>
     <loc>https://aperiaskin.com/journal/hormonal-skin-guide</loc>
-    <changefreq>monthly</changefreq><priority>0.9</priority>
+    <changefreq>monthly</changefreq><priority>0.9</priority><lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://aperiaskin.com/journal/hormonal-skin-guide"/>
     <xhtml:link rel="alternate" hreflang="sk" href="https://aperiaskin.com/sk/hormonalna-plet-sprievodca"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://aperiaskin.com/cz/hormonalni-plet-pruvodce"/>
@@ -18,13 +18,13 @@
   <url><loc>https://aperiaskin.com/journal/chin-and-jawline-breakouts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/hormonal-acne-vs-regular-acne</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/skincare-for-your-cycle</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://aperiaskin.com/journal/skin-during-your-period</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://aperiaskin.com/journal/stress-cortisol-and-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://aperiaskin.com/journal/estrogen-progesterone-and-your-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/skin-during-your-period</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://aperiaskin.com/journal/stress-cortisol-and-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://aperiaskin.com/journal/estrogen-progesterone-and-your-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://aperiaskin.com/journal/how-long-to-see-skin-results</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <url><loc>https://aperiaskin.com/journal/why-breakouts-follow-your-cycle</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://aperiaskin.com/journal/breakouts-before-your-period</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aperiaskin.com/journal/breakouts-before-your-period</loc><changefreq>monthly</changefreq><priority>0.7</priority><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://aperiaskin.com/journal/is-your-skin-hormonal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/how-aperia-reads-your-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aperiaskin.com/journal/what-actually-drives-your-skin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -40,4 +40,6 @@
   <url><loc>https://aperiaskin.com/guides/breakouts-after-your-period</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://aperiaskin.com/guides/is-my-skincare-breaking-me-out</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://aperiaskin.com/guides/what-is-causing-my-breakouts</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://aperiaskin.com/guides/oily-skin-before-period</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://aperiaskin.com/guides/luteal-phase-skin</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-10-26</lastmod></url>
 </urlset>
