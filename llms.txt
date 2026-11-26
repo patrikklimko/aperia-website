@@ -1,6 +1,9 @@
 # Aperia
 
-> Aperia is a hormone-aware skincare intelligence app for iPhone that helps people understand why they break out. It scans your skin and scores it by zone, tracks your menstrual cycle, sleep, stress and food, and reveals the patterns behind your breakouts in plain language. Aperia is a self-knowledge tool, not a medical service. Free to start.
+> Aperia is a hormone-aware skincare intelligence app for iPhone and Android that helps people understand why they break out. It scans your skin and scores it by zone, tracks your menstrual cycle, sleep, stress and food, and reveals the patterns behind your breakouts in plain language. Aperia is a self-knowledge tool, not a medical service. Free to start.
+
+- App Store: https://apps.apple.com/app/id6781202703
+- Google Play: https://play.google.com/store/apps/details?id=com.patrikklimko.lumen
 
 ## What Aperia helps people with
 - Understanding why breakouts happen, and why they often follow the hormonal cycle (the same spot, the same week, month after month)

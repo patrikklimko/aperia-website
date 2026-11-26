@@ -44,3 +44,8 @@ Every "Download / Get the app" button has a static App Store campaign link:
 - `ct=` — where the tap came from: `home-nav`, `home-hero`, `home-final-cta`, `home-footer`, `home-mobile-bar`, `about-cta`, `j-<article-slug>-cta`, `cz-…`, `sk-…`.
 - Results: App Store Connect → Analytics → Acquisition → Campaigns (shows once enough installs come in; Apple hides campaigns with very few installs).
 - New page or tool → copy the link and give it its own `ct` (max 40 characters).
+
+## Google Play (Android)
+- Home hero + final CTA show both badges (App Store + Google Play, `data-playstore`).
+- Every other "Get the app / Download" button stays an App Store link in the HTML; `assets/store-links.js` (loaded on every page) swaps it to the Play link on Android phones and passes the same `ct=` name as a Play referrer (`utm_campaign`), visible in Play Console → Acquisition.
+- New page with a store button → add `<script src="/assets/store-links.js" defer></script>` before `</body>`.
